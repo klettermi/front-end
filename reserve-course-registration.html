@@ -2,17 +2,14 @@
 <html lang="kr">
 <head>
     <meta charset="UTF-8">
-    <title>reserve application</title>
-    <script src="../static/js/bootstrap.bundle.js"></script>
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <style>
-        div.section {
-            padding: 20px;
-            background: #caebff;
-            border-radius: 2rem;
-            margin-bottom: 5rem;
-        }
-    </style>
+    <title>예비 수강 신청</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href="../static/css/styles.css" rel="stylesheet" />
 </head>
 <body>
 <div class="container text-center">
@@ -46,7 +43,12 @@
                     <div class="row">
                         <div class="col-sm-3">과목코드</div>
                         <div class="col-sm-6">
-                            <input class="form-control me-2" aria-label="Search">
+                            <select class="form-select form-select-sm" aria-label="Small select example">
+                                <option selected></option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -101,7 +103,7 @@
                 <td>45</td>
                 <td>0</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">신청</button>
+                    <button type="submit">신청</button>
                 </td>
             </tr>
             <tr>
@@ -116,7 +118,7 @@
                 <td>60</td>
                 <td>0</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">신청</button>
+                    <button type="submit">신청</button>
                 </td>
             </tr>
             <tr>
@@ -131,7 +133,7 @@
                 <td>45</td>
                 <td>0</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">신청</button>
+                    <button type="submit">신청</button>
                 </td>
             </tr>
             <tr>
@@ -146,7 +148,7 @@
                 <td>60</td>
                 <td>0</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">신청</button>
+                    <button type="submit">신청</button>
                 </td>
             </tr>
             <tr>
@@ -161,7 +163,7 @@
                 <td>45</td>
                 <td>0</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">신청</button>
+                    <button type="submit">신청</button>
                 </td>
             </tr>
             <tr>
@@ -176,7 +178,7 @@
                 <td>60</td>
                 <td>0</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">신청</button>
+                    <button type="submit">신청</button>
                 </td>
             </tr>
             </tbody>
@@ -226,7 +228,7 @@
                 <td>45</td>
                 <td>0</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">신청</button>
+                    <button type="submit">취소</button>
                 </td>
             </tr>
             <tr>
@@ -241,7 +243,7 @@
                 <td>60</td>
                 <td>0</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">신청</button>
+                    <button type="submit">취소</button>
                 </td>
             </tr>
             <tr>
@@ -256,7 +258,7 @@
                 <td>45</td>
                 <td>0</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">신청</button>
+                    <button type="submit">취소</button>
                 </td>
             </tr>
             <tr>
@@ -271,7 +273,7 @@
                 <td>60</td>
                 <td>0</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">신청</button>
+                    <button type="submit">취소</button>
                 </td>
             </tr>
             <tr>
@@ -286,7 +288,7 @@
                 <td>45</td>
                 <td>0</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">신청</button>
+                    <button type="submit">취소</button>
                 </td>
             </tr>
             <tr>
@@ -301,7 +303,7 @@
                 <td>60</td>
                 <td>0</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">신청</button>
+                    <button type="submit">취소</button>
                 </td>
             </tr>
             </tbody>
@@ -320,90 +322,6 @@
             <li class="page-item"><a class="page-link" href="#">11</a></li>
             <li class="page-item"><a class="page-link" href="#">12</a></li>
         </ul>
-    </div>
-    <div class="row section">
-        <h3>현황</h3>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th scope="col">현재학점</th>
-                <th scope="col">남은학점</th>
-                <th scope="col">학번</th>
-                <th scope="col">이름</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>15</td>
-                <td>3</td>
-                <td>202314083</td>
-                <td>아무개</td>
-            </tr>
-            </tbody>
-        </table>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th scope="col">학과</th>
-                <th scope="col">이수구분</th>
-                <th scope="col">과목코드</th>
-                <th scope="col">분반</th>
-                <th scope="col">교과목명</th>
-                <th scope="col">학점</th>
-                <th scope="col">담당교수</th>
-                <th scope="col">강의 시간</th>
-                <th scope="col">제한 인원</th>
-                <th scope="col">현재 신청 인원</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>행정심리학부</td>
-                <td>균형교양</td>
-                <td>1220014</td>
-                <td>1</td>
-                <td>범죄와심리</td>
-                <td>3</td>
-                <td>전우병</td>
-                <td>월 1 2 3,화 1 2 3,수 1 2 3</td>
-                <td>45</td>
-                <td>0</td>
-                <td>
-                    <button type="button" class="btn btn-primary btn-sm">취소</button>
-                </td>
-            </tr>
-            <tr>
-                <td>환경융합학부</td>
-                <td>균형교양</td>
-                <td>1230068</td>
-                <td>1</td>
-                <td>인간과환경</td>
-                <td>3</td>
-                <td>강신규</td>
-                <td>월 2 3 4,화 2 3 4,수 2 3 4</td>
-                <td>60</td>
-                <td>0</td>
-                <td>
-                    <button type="button" class="btn btn-primary btn-sm">취소</button>
-                </td>
-            </tr>
-            <tr>
-                <td>행정심리학부</td>
-                <td>균형교양</td>
-                <td>1220014</td>
-                <td>1</td>
-                <td>범죄와심리</td>
-                <td>3</td>
-                <td>전우병</td>
-                <td>월 1 2 3,화 1 2 3,수 1 2 3</td>
-                <td>45</td>
-                <td>0</td>
-                <td>
-                    <button type="button" class="btn btn-primary btn-sm">취소</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
     </div>
 </div>
 </body>

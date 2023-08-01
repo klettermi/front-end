@@ -71,4 +71,9 @@
     background-size: 210px 210px;
 }
 
-
+.section {
+    padding: 20px;
+    background: #caebff;
+    border-radius: 2rem;
+    margin-bottom: 5rem;
+}

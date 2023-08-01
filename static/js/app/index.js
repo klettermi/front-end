@@ -23,7 +23,7 @@ function login() {
         console.log(data.status_code)
         if (data.status_code == 200) {
             alert(data.message);
-            window.location.href = "../../../pages/course-registration.html";
+            window.location.href = "course-registration.html";
         } else {
             alert("로그인 정보가 일치하지 않습니다.");
         }
