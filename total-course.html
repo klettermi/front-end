@@ -1,11 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>강의조회페이지</title>
+    <title>강의 조회페이지</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href="../static/css/styles.css" rel="stylesheet" />
 </head>
+
 <body>
-    
+    <div class="container text-center">
+        <div id="select_area" class="section">
+            <div class="container text-center" style="background-color: white;">
+                <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h1>수강 편람(강의 조회)</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="search_list" class="row section">
+            <div class="container text-center" style="background-color: white;">
+                <div class="row row-cols-4">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-sm-3">년도</div>
+                            <div class="col-sm-6">
+                                <select class="form-select form-select-sm" aria-label="Small select example">
+                                    <option selected></option>
+                                    <option value="1">2023년도</option>
+                                    <option value="2">2022년도</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-sm-4">학기</div>
+                            <div class="col-sm-6">
+                                <select class="form-select form-select-sm" aria-label="Small select example">
+                                    <option selected></option>
+                                    <option value="1">1학기</option>
+                                    <option value="2">2학기</option>
+                                    <option value="3">여름계절</option>
+                                    <option value="4">가을계절</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-4">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-sm-3">구분</div>
+                            <div class="col-sm-6">
+                                <select class="form-select form-select-sm" aria-label="Small select example">
+                                    <option selected></option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-sm-4">학과</div>
+                            <div class="col-sm-6">
+                                <select class="form-select form-select-sm" aria-label="Small select example">
+                                    <option selected></option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-sm-4">과목코드</div>
+                            <div class="col-sm-8">
+                                <input class="form-control me-2" aria-label="Search">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-outline-primary">검색</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row section">
+            <h3>조회 목록</h3>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">대학</th>
+                    <th scope="col">학과</th>
+                    <th scope="col">전공</th>
+                    <th scope="col">이수구분</th>
+                    <th scope="col">과목코드</th>
+                    <th scope="col">분반</th>
+                    <th scope="col">교과목명</th>
+                    <th scope="col">학점</th>
+                    <th scope="col">담당교수</th>
+                    <th scope="col">강의 시간</th>
+                    <th scope="col">제한 인원</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>인문대학</td>
+                    <td>행정심리학부</td>
+                    <td>심리학과</td>
+                    <td>균형교양</td>
+                    <td>1220014</td>
+                    <td>1</td>
+                    <td>범죄와심리</td>
+                    <td>3</td>
+                    <td>전우병</td>
+                    <td>월 1 2 3,화 1 2 3,수 1 2 3</td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td>공과대학</td>
+                    <td>환경융합학부</td>
+                    <td>환경공학과</td>
+                    <td>균형교양</td>
+                    <td>1230068</td>
+                    <td>1</td>
+                    <td>인간과환경</td>
+                    <td>3</td>
+                    <td>강신규</td>
+                    <td>월 2 3 4,화 2 3 4,수 2 3 4</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>인문대학</td>
+                    <td>행정심리학부</td>
+                    <td>심리학과</td>
+                    <td>균형교양</td>
+                    <td>1220014</td>
+                    <td>1</td>
+                    <td>범죄와심리</td>
+                    <td>3</td>
+                    <td>전우병</td>
+                    <td>월 1 2 3,화 1 2 3,수 1 2 3</td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td>공과대학</td>
+                    <td>환경융합학부</td>
+                    <td>환경공학과</td>
+                    <td>균형교양</td>
+                    <td>1230068</td>
+                    <td>1</td>
+                    <td>인간과환경</td>
+                    <td>3</td>
+                    <td>강신규</td>
+                    <td>월 2 3 4,화 2 3 4,수 2 3 4</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>인문대학</td>
+                    <td>행정심리학부</td>
+                    <td>심리학과</td>
+                    <td>균형교양</td>
+                    <td>1220014</td>
+                    <td>1</td>
+                    <td>범죄와심리</td>
+                    <td>3</td>
+                    <td>전우병</td>
+                    <td>월 1 2 3,화 1 2 3,수 1 2 3</td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td>공과대학</td>
+                    <td>환경융합학부</td>
+                    <td>환경공학과</td>
+                    <td>균형교양</td>
+                    <td>1230068</td>
+                    <td>1</td>
+                    <td>인간과환경</td>
+                    <td>3</td>
+                    <td>강신규</td>
+                    <td>월 2 3 4,화 2 3 4,수 2 3 4</td>
+                    <td>60</td>
+                </tr>
+                </tbody>
+            </table>
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                <li class="page-item"><a class="page-link" href="#">7</a></li>
+                <li class="page-item"><a class="page-link" href="#">8</a></li>
+                <li class="page-item"><a class="page-link" href="#">9</a></li>
+                <li class="page-item"><a class="page-link" href="#">10</a></li>
+                <li class="page-item"><a class="page-link" href="#">11</a></li>
+                <li class="page-item"><a class="page-link" href="#">12</a></li>
+            </ul>
+        </div>
 </body>
+
+</html>
+</body>
+
 </html>
