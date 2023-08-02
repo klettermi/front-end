@@ -77,3 +77,11 @@
     border-radius: 2rem;
     margin-bottom: 5rem;
 }
+
+.main-content {
+    height: 30rem;
+    justify-content: space-between;
+}
+.main-content > ul {
+    align-self: flex-end;
+}
