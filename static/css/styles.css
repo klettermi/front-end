@@ -1,6 +1,13 @@
+/* 
+기본 글꼴
+*/
 * {
     font-family: "Noto Serif KR", serif;
 }
+
+/* 
+로그인 페이지 
+*/
 
 .body {
     height: 100%;
@@ -71,9 +78,24 @@
     background-size: 210px 210px;
 }
 
+/*
+조회 및 신청 페이지 css 
+ */
+
+.container {
+    padding: 10px;
+    height: 100%;
+    background-color: #caebff;
+}
+
 .section {
-    padding: 20px;
-    background: #caebff;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 30px;
     border-radius: 2rem;
     margin-bottom: 5rem;
+    background: white;
 }
+
+
+
