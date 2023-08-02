@@ -1,12 +1,12 @@
-/* 
+/*
 기본 글꼴
 */
 * {
     font-family: "Noto Serif KR", serif;
 }
 
-/* 
-로그인 페이지 
+/*
+로그인 페이지
 */
 
 .body {
@@ -79,7 +79,7 @@
 }
 
 /*
-조회 및 신청 페이지 css 
+조회 및 신청 페이지 css
  */
 
 .container {
@@ -97,5 +97,10 @@
     background: white;
 }
 
-
-
+.main-content {
+    height: 30rem;
+    justify-content: space-between;
+}
+.main-content > ul {
+    align-self: flex-end;
+}
