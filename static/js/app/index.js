@@ -1,5 +1,5 @@
 function login() {
-    let student_num = document.getElementById("student_num").value;
+    let student_num = document.getElementById("studentNum").value;
     let password = document.getElementById("password").value;
 
     let loginUrl = "http://localhost:8080/api/auth/login";
@@ -10,7 +10,7 @@ function login() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            "student_num": student_num,
+            "studentNum": student_num,
             "password": password,
         }),
     })
@@ -20,9 +20,8 @@ function login() {
         return response.json();
     })
     .then(data => {
-        console.log(data.status_code)
-        if (data.status_code == 200) {
-            alert(data.message);
+        if (data.statusCode == 200) {
+            alert(data.msg);
             window.location.href = "course-registration.html";
         } else {
             alert("로그인 정보가 일치하지 않습니다.");
