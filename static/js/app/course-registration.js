@@ -6,16 +6,15 @@ function logout() {
 function search_class() {
     const year = 2023;
     const semester = 1;
-    const departOptions = document.getElementById("depart");
-    const sortOptions = document.getElementById("sort");
-
-    const depart = departOptions.options[departOptions.selectedIndex].text;
-    const sort = sortOptions.options[sortOptions.selectedIndex].text;
+    const subjectCd = $("#subject-code").val();
+    const depart = $("#depart option:selected").text();
+    const sort = $("#sort option:selected").text();
 
     const searchUrl = "http://localhost:8080/api/courses"
     const params = {  // 필요한 query params를 {} 형태에 담아준다.
         year: year,
         semester: semester,
+        subjectCd: subjectCd,
         depart: depart,
         sort: sort
     };
@@ -29,49 +28,57 @@ function search_class() {
         method: "GET"
     })
         .then((response) => response.json())
-        .then((result) => result.data.json())
         .then((result) => {
-            result.forEach(data => {
-                const 대학 = data.대학;
-                const 학과 = data.학과;
-                const 전공 = data.전공;
-                const 이수구분 = data.이수구분;
-                const 과목코드 = data.과목코드;
-                const 분반 = data.분반;
-                const 교과목명 = data.교과목명;
-                const 학점 = data.학점;
-                const 담당교수 = data.담당교수;
-                const 강의시간 = data.강의시간;
-                const 제한인원 = data.제한인원;
-                const 현재신청인원 = data.현재신청인원;
+                if (result.success) {
+                    $('#search-list').empty();
 
-                const searchList = document.getElementById("search-list");
+                    result.data.forEach(element => {
+                        const courseId = element.courseId;
+                        const collegeName = element.collegeName;
+                        const departmentName = element.departmentName == null ? '-' : element.departmentName;
+                        const majorName = element.majorName  == null ? '-' : element.majorName;
+                        const sort = element.sort;
+                        const subjectCd = element.subjectCd;
+                        const division = element.division;
+                        const subjectName = element.subjectName;
+                        const credit = element.credit;
+                        const professorName = element.professorName;
+                        const timetable = element.timetable;
+                        const limitation = element.limitation;
+                        const numberOfCurrent = element.numberOfCurrent;
 
-                let temp = `
-                <tr>
-                    <td>${대학}</td>
-                    <td>${학과}</td>
-                    <td>${전공}</td>
-                    <td>${이수구분}</td>
-                    <td>${과목코드}</td>
-                    <td>${분반}</td>
-                    <td>${교과목명}</td>
-                    <td>${학점}</td>
-                    <td>${담당교수}</td>
-                    <td>${강의시간}</td>
-                    <td>${제한인원}</td>
-                    <td>${현재신청인원}</td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-sm" onclick="register()">신청</button>
-                    </td>
-                </tr>
-                `
-                searchList.empty();
-                searchList.append(temp)
-            })
 
-        })
+                        let temp = `
+                            <tr>
+                                <td>${collegeName}</td>
+                                <td>${departmentName}</td>
+                                <td>${majorName}</td>
+                                <td>${sort}</td>
+                                <td>${subjectCd}</td>
+                                <td>${division}</td>
+                                <td>${subjectName}</td>
+                                <td>${credit}</td>
+                                <td>${professorName}</td>
+                                <td>${timetable}</td>
+                                <td>${limitation}</td>
+                                <td>${numberOfCurrent}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="register(${courseId})">신청</button>
+                                </td>
+                            </tr>
+                            `
+                        $('#search-list').append(temp)
+                    })
+                } else {
+                    console.log("조회 데이터 없음")
+                }
+            }
+        )
         .catch(error => {
             console.error("조회 api 에러", error);
         });
+}
+
+function register(courseId) {
+    console.log(courseId)
 }
