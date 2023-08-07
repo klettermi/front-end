@@ -9,14 +9,16 @@ function search_class() {
     const subjectCd = $("#subject-code").val();
     const depart = $("#depart option:selected").text();
     const sort = $("#sort option:selected").text();
+    const major = $("#major option:selected").text();
 
     const searchUrl = "http://localhost:8080/api/courses"
     const params = {  // 필요한 query params를 {} 형태에 담아준다.
         year: year,
         semester: semester,
         subjectCd: subjectCd,
-        depart: depart,
-        sort: sort
+        departNm: depart,
+        sortNm: sort,
+        majorNm: major
     };
 
     const queryString = new URLSearchParams(params).toString();
