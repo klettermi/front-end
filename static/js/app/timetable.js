@@ -1,8 +1,11 @@
 function getTimetable(){
-    const timetableUrl = "http://localhost:8080/api/students/timetable"
-    
+    let timetableUrl = "http://localhost:8080/api/students/timetable"
+    let token = localStorage.getItem("Authorization");
     fetch(timetableUrl, {
-        method: "GET"
+        method: "GET",
+        headers: {
+            "Authorization": token
+        }
     })
         .then((response) => response.json())
         .then((result) => {
