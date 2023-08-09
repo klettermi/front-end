@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="static/images/logo1.png" alt="logo1" height="24" class="d-inline-block align-text-top pe-3">
@@ -323,6 +323,27 @@
         <div class="row rounded border p-4 mb-4">
             <div>
                 <h3 class="mb-4">신청현황</h3>
+                <div style="width: 38%; font-size: 15px; margin-bottom: 30px;">
+                  <table class="table table-hover text-center" style="table-layout: fixed;word-break: break-all;height: auto;">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">학번</th>
+                            <th scope="col">이름</th>
+                            <th scope="col">이수가능학점</th>
+                            <th scope="col">현재신청학점</th>
+                        </tr>
+                    </thread>
+                    <tbody id="student-info">
+                        <tr>
+                            <td>1111111</td>
+                            <td>홍길동</td>
+                            <td>21</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>  
+                </div>
+                
                 <table class="table table-hover text-center">
                     <thead class="table-light">
                         <tr>
