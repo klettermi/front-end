@@ -17,21 +17,19 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="static/images/logo1.png" alt="logo1" height="24" class="d-inline-block align-text-top pe-3">
-            <span class="align-text-top h5">수강신청</span>
-        </a>
-        <div>
-            <span class="navbar-text me-3">2023년도 2학기 수강 신청</span>
-            <span class="navbar-text me-3">홍길동 님</span>
-            <button type="button" id="logout" class="nav-item btn btn-outline-primary btn-sm me-2" onclick="logout()">
-                로그아웃
-            </button>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="static/images/logo1.png" alt="logo1" height="24" class="d-inline-block align-text-top pe-3">
+                <span class="align-text-top h5">수강신청</span>
+            </a>
+            <div>
+                <span class="navbar-text me-3">2023년도 2학기 수강 신청</span>
+                <span class="navbar-text me-3">홍길동 님</span>
+                <button type="button" id="logout" class="nav-item btn btn-outline-primary btn-sm me-2" onclick="logout()">로그아웃</button>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
 <div class="container">
     <div id="search_list" class="row rounded border p-4 my-4">
@@ -542,6 +540,26 @@
     <div class="row rounded border p-4 mb-4">
         <div>
             <h3 class="mb-4">신청현황</h3>
+            <div style="width: 38%; font-size: 15px; margin-bottom: 30px;">
+                <table class="table table-hover text-center" style="table-layout: fixed;word-break: break-all;height: auto;">
+                  <thead class="table-light">
+                      <tr>
+                          <th scope="col">학번</th>
+                          <th scope="col">이름</th>
+                          <th scope="col">이수가능학점</th>
+                          <th scope="col">현재신청학점</th>
+                      </tr>
+                  </thread>
+                  <tbody id="student-info">
+                      <tr>
+                          <td>1111111</td>
+                          <td>홍길동</td>
+                          <td>21</td>
+                          <td>0</td>
+                      </tr>
+                  </tbody>
+              </table>  
+              </div>
             <table class="table table-hover text-center">
                 <thead class="table-light">
                 <tr>
