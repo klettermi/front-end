@@ -2,7 +2,7 @@ function login() {
     let student_num = document.getElementById("studentNum").value;
     let password = document.getElementById("password").value;
 
-    let loginUrl = "http://localhost:8080/api/auth/login";
+    let loginUrl = `${process.env.BASE_URL}/api/auth/login`;
 
     fetch(loginUrl, {
         method: "POST",
