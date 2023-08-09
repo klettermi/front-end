@@ -1,5 +1,6 @@
 $(document).ready(function () {
     getRegistration();
+    getUserInfo();
 });
 
 function logout() {
@@ -183,4 +184,39 @@ function getRegistration() {
         }
     });
 
+}
+
+function getUserInfo(){
+    let url = "http://localhost:8080/api/students/info"
+    let token = localStorage.getItem("Authorization");
+    fetch(url, {
+        method: "GET",
+        headers: {
+            "Authorization": token
+        }
+    })
+        .then((response) => response.json())
+        .then((result) => { 
+            console.log(result);
+            if (result.success) {
+                var data = result.data
+                $('#student-info').empty();
+                const studentNM = data.studentNM;
+                const studentNum = data.studentNum;
+                const possibleCredits = data.possibleCredits;
+                const appliedCredits = data.appliedCredits;
+
+                let temp = `
+                        <tr>
+                            <td>1111111</td>
+                            <td>홍길동</td>
+                            <td>18</td>
+                            <td>3</td>
+                        </tr>
+                        `
+                $('#student-info').append(temp)
+            }else {
+                console.log(result.errors)
+            }
+        })
 }
