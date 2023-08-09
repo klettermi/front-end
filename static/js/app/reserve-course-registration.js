@@ -7,20 +7,24 @@ function logout() {
     // location.replace("메인페이지 주소")
 }
 
-function search_class() {
-    const year = 2022;
+function search_courses() {
+    const year = 2023;
     const semester = 1;
     const subjectCd = $("#subject-code").text();
-    const depart = $("#depart option:selected").text();
-    const sort = $("#sort option:selected").text();
+    const college = $("#college option:selected").val();
+    const depart = $("#depart option:selected").val();
+    const sort = $("#sort option:selected").val();
+    const major = $("#major option:selected").val();
 
     const searchUrl = "http://localhost:8080/api/courses"
     const params = {  // 필요한 query params를 {} 형태에 담아준다.
         year: year,
         semester: semester,
         subjectCd: subjectCd,
-        depart: depart,
-        sort: sort
+        collegeNm: college,
+        departNm: depart,
+        sortNm: sort,
+        majorNm: major
     };
 
     const queryString = new URLSearchParams(params).toString();
@@ -34,7 +38,7 @@ function search_class() {
         .then((response) => response.json())
         .then((result) => {
                 if (result.success) {
-                    $('#search-list').empty();
+                    $('#course-list').empty();
 
                     result.data.forEach(element => {
                         const courseId = element.courseId;
@@ -67,11 +71,11 @@ function search_class() {
                                 <td>${limitation}</td>
                                 <td>${numberOfCurrent}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-sm" onclick="registerToBasket(${courseId})">신청</button>
+                                    <button type="submit" class="btn btn-primary btn-sm" onclick="registerToBasket(${courseId})">신청</button>
                                 </td>
                             </tr>
                             `
-                        $('#search-list').append(temp)
+                        $('#course-list').append(temp)
                     })
                 } else {
                     console.log("조회 데이터 없음")
