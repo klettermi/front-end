@@ -1,18 +1,24 @@
+function changeH1(){
+    const h1 = document.getElementsByTagName('h1')
+    h1[0].innerText = localStorage.getItem('year') + '학년도 ' + localStorage.getItem('semester') + ' 시간표'
+}
 function getTimetable(){
-    const timetableUrl = "http://localhost:8080/api/students/timetable"
-    
+    let timetableUrl = "http://localhost:8080/api/students/timetable"
+    let token = localStorage.getItem("Authorization");
     fetch(timetableUrl, {
-        method: "GET"
+        method: "GET",
+        headers: {
+            "Authorization": token
+        }
     })
         .then((response) => response.json())
         .then((result) => {
             return result.data
-            console.log(result.data)
         })
         .then((result) => {        
             result.forEach(courses => {
                 courses = result;
-
+            
                 var table = document.getElementById("table");
 
                 var weekName = ['월', '화', '수', '목', '금', '토', '일'];
