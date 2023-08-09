@@ -36,3 +36,17 @@ th, td {
 th:first-child, td:first-child {
     border-left: none;
 }
+
+.main-content {
+    height: 27rem;
+    overflow: auto;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: gray;
+}
