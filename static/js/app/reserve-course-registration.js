@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 function logout() {
     localStorage.removeItem("Authorization");
-    // location.replace("메인페이지 주소")
+    location.replace("/index.html")
 }
 
 function search_class() {
