@@ -8,20 +8,24 @@ function logout() {
     location.replace("/index.html")
 }
 
-function search_class() {
-    const year = 2022;
+function search_courses() {
+    const year = 2023;
     const semester = 1;
     const subjectCd = $("#subject-code").text();
-    const depart = $("#depart option:selected").text();
-    const sort = $("#sort option:selected").text();
+    const college = $("#college option:selected").val();
+    const depart = $("#depart option:selected").val();
+    const sort = $("#sort option:selected").val();
+    const major = $("#major option:selected").val();
 
     const searchUrl = "http://localhost:8080/api/courses"
     const params = {  // 필요한 query params를 {} 형태에 담아준다.
         year: year,
         semester: semester,
         subjectCd: subjectCd,
-        depart: depart,
-        sort: sort
+        collegeNm: college,
+        departNm: depart,
+        sortNm: sort,
+        majorNm: major
     };
 
     const queryString = new URLSearchParams(params).toString();
@@ -41,7 +45,7 @@ function search_class() {
                         const courseId = element.courseId;
                         const collegeName = element.collegeName;
                         const departmentName = element.departmentName == null ? '-' : element.departmentName;
-                        const majorName = element.majorName  == null ? '-' : element.majorName;
+                        const majorName = element.majorName == null ? '-' : element.majorName;
                         const sort = element.sort;
                         const subjectCd = element.subjectCd;
                         const division = element.division;
@@ -68,7 +72,7 @@ function search_class() {
                                 <td>${limitation}</td>
                                 <td>${numberOfCurrent}</td>
                                 <td>
-                                    <button type="submit" class="btn btn-primary btn-sm" onclick="pre_register(${courseId})">신청</button>
+                                    <button type="submit" class="btn btn-primary btn-sm" onclick="register(${courseId})">신청</button>
                                 </td>
                             </tr>
                             `
@@ -94,15 +98,15 @@ function register(courseId) {
             "Authorization": token
         },
     })
-    .then(response => response.json())
-    .then(result => {
-        if (result.success) {
-            alert(result.msg);
-            location.reload();
-        } else {
-            alert(result.errors);
-        }
-    });
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                alert(result.msg);
+                location.reload();
+            } else {
+                alert(result.errors);
+            }
+        });
 }
 
 function cancel(registrationId) {
@@ -114,15 +118,15 @@ function cancel(registrationId) {
             "Authorization": token
         },
     })
-    .then(response => response.json())
-    .then(result => {
-        if (result.success) {
-            alert(result.msg);
-            location.reload();
-        } else {
-            alert(result.errors);
-        }
-    });
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                alert(result.msg);
+                location.reload();
+            } else {
+                alert(result.errors);
+            }
+        });
 }
 
 function getRegistration() {
@@ -134,28 +138,28 @@ function getRegistration() {
             "Authorization": token
         },
     })
-    .then(response => response.json())
-    .then(result => {
-        console.log(result);
-        if (result.success) {
-            $('#registration-list').empty();
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            if (result.success) {
+                $('#registration-list').empty();
 
-            result.data.forEach(element => {
-                const registrationId = element.registrationId;
-                const collegeName = element.collegeName;
-                const departmentName = element.departmentName == null ? '-' : element.departmentName;
-                const majorName = element.majorName  == null ? '-' : element.majorName;
-                const sort = element.sort;
-                const subjectCode = element.subjectCode;
-                const division = element.division;
-                const subjectName = element.subjectName;
-                const credit = element.credit;
-                const professorName = element.professorName;
-                const timetable = element.timetable;
-                const limitation = element.limitation;
-                const current = element.current;
+                result.data.forEach(element => {
+                    const registrationId = element.registrationId;
+                    const collegeName = element.collegeName;
+                    const departmentName = element.departmentName == null ? '-' : element.departmentName;
+                    const majorName = element.majorName == null ? '-' : element.majorName;
+                    const sort = element.sort;
+                    const subjectCode = element.subjectCode;
+                    const division = element.division;
+                    const subjectName = element.subjectName;
+                    const credit = element.credit;
+                    const professorName = element.professorName;
+                    const timetable = element.timetable;
+                    const limitation = element.limitation;
+                    const current = element.current;
 
-                let temp = `
+                    let temp = `
                     <tr>
                         <td>${collegeName}</td>
                         <td>${departmentName}</td>
