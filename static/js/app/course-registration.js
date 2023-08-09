@@ -34,7 +34,7 @@ function search_class() {
         .then((response) => response.json())
         .then((result) => {
                 if (result.success) {
-                    $('#search-list').empty();
+                    $('#course-list').empty();
 
                     result.data.forEach(element => {
                         const courseId = element.courseId;
@@ -67,11 +67,11 @@ function search_class() {
                                 <td>${limitation}</td>
                                 <td>${numberOfCurrent}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-sm" onclick="pre_register(${courseId})">신청</button>
+                                    <button type="submit" class="btn btn-primary btn-sm" onclick="pre_register(${courseId})">신청</button>
                                 </td>
                             </tr>
                             `
-                        $('#search-list').append(temp)
+                        $('#course-list').append(temp)
                     })
                 } else {
                     console.log("조회 데이터 없음")
@@ -172,7 +172,7 @@ function getRegistration() {
                         <td>${limitation}</td>
                         <td>${current}</td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm" onclick="cancel(${registrationId})">취소</button>
+                            <button type="submit" class="btn btn-primary btn-sm" onclick="cancel(${registrationId})">취소</button>
                         </td>
                     </tr>
                     `

@@ -1,6 +1,38 @@
 /*
-기본 글꼴
+기본값
 */
 * {
-    font-family: "Noto Serif KR", serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.btn-primary {
+    border-color: #3D90D9;
+    background-color: #3D90D9;
+}
+
+.btn-primary:hover {
+    border-color: #3D90D9;
+    background-color: #3D90D9;
+}
+
+.btn-outline-primary {
+    border-color: #3D90D9;
+    color: #3D90D9;
+}
+
+.btn-outline-primary:hover {
+    border-color: #3D90D9;
+    background-color: #3D90D9;
+}
+
+thead {
+    border-bottom: 2px solid;
+}
+
+th, td {
+    border-left: 1px solid #DEDEDE;
+}
+
+th:first-child, td:first-child {
+    border-left: none;
 }

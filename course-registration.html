@@ -3,80 +3,72 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>수강 신청</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이노캠 | 수강신청</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <link href="../static/css/styles.css" rel="stylesheet" />
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    <link href="../static/css/default.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="container text-center">
-        <div id="select_area" class="section">
-            <div class="container text-center" style="background-color: white;">
-                <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-                <div class="row">
-                    <div class="col-sm-8"><h1>(yyyy년도 n학기) 수강 신청</h1></div>
-                    <div class="col-sm-1">년도</div>
-                    <div class="col-sm-1">학기</div>
-                    <div class="col-sm-2">
-                        <button type="button" id="logout" class="btn btn-primary btn-sm" onclick="logout()">로그아웃</button>
-                    </div>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="static/images/logo1.png" alt="logo1" height="24" class="d-inline-block align-text-top pe-3">
+                <span class="align-text-top h5">수강신청</span>
+            </a>
+            <div>
+                <span class="navbar-text me-3">2023년도 2학기 수강 신청</span>
+                <span class="navbar-text me-3">홍길동 님</span>
+                <button type="button" id="logout" class="nav-item btn btn-outline-primary btn-sm me-2" onclick="logout()">로그아웃</button>
             </div>
         </div>
-        <div id="search_list" class="row section">
-            <div class="container text-center" style="background-color: white;">
-                <div class="row row-cols-3">
-                    <div class="col">
-                        <div class="row">
-                            <div class="col-sm-2">구분</div>
-                            <div class="col-sm-6">
-                                <select class="form-select form-select-sm" aria-label="Small select example">
-                                    <option selected></option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="row">
-                            <div class="col-sm-4">과목코드</div>
-                            <div class="col-sm-8">
-                                <input class="form-control me-2" aria-label="Search">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-outline-primary">검색</button>
-                    </div>
-                    <div class="col">
-                        <div class="row">
-                            <div class="col-sm-2">학과</div>
-                            <div class="col-sm-6">
-                                <select class="form-select form-select-sm" aria-label="Small select example">
-                                    <option selected></option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+    </nav>
+
+    <div class="container">
+        <div id="search_list" class="row rounded border p-4 my-4">
+            <div class="row mb-2">
+                <div class="col-1">구분</div>
+                <div class="col-3">
+                    <select class="form-select"  aria-label="Small select example">
+                        <option selected>선택</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="col-2">과목코드</div>
+                <div class="col-3">
+                    <input class="form-control" aria-label="Search">
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-outline-primary">검색</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">학과</div>
+                <div class="col-3">
+                    <select class="form-select" aria-label="Small select example">
+                        <option selected>선택</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
                 </div>
             </div>
         </div>
 
-        <div class="row section main-content">
+        <div class="row rounded border p-4 mb-4">
             <div>
-                <h3>조회 목록</h3>
-                <table class="table table-hover">
-                    <thead>
+                <h3 class="mb-4">조회 목록</h3>
+                <table class="table table-hover text-center">
+                    <thead class="table-light">
                         <tr>
                             <th scope="col">대학</th>
                             <th scope="col">학과</th>
@@ -90,9 +82,10 @@
                             <th scope="col">강의 시간</th>
                             <th scope="col">제한 인원</th>
                             <th scope="col">현재 신청 인원</th>
+                            <th scope="col">신청</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="course-list">
                         <tr>
                             <td>인문대학</td>
                             <td>행정심리학부</td>
@@ -107,7 +100,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="1" onclick="register(this.id)">신청</button>
+                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="register(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -124,7 +117,7 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">신청</button>
+                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="register(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -141,7 +134,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">신청</button>
+                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="register(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -158,7 +151,7 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">신청</button>
+                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="register(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -175,7 +168,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">신청</button>
+                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="register(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -192,32 +185,18 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">신청</button>
+                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="register(this.id)">신청</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                <li class="page-item"><a class="page-link" href="#">7</a></li>
-                <li class="page-item"><a class="page-link" href="#">8</a></li>
-                <li class="page-item"><a class="page-link" href="#">9</a></li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                <li class="page-item"><a class="page-link" href="#">11</a></li>
-                <li class="page-item"><a class="page-link" href="#">12</a></li>
-            </ul>
         </div>
-        <div class="row section main-content">
+        <div class="row rounded border p-4 mb-4">
             <div>
-                <h3>장바구니</h3>
-                <table class="table table-hover">
-                    <thead>
+                <h3 class="mb-4">장바구니</h3>
+                <table class="table table-hover text-center">
+                    <thead class="table-light">
                         <tr>
                             <th scope="col">대학</th>
                             <th scope="col">학과</th>
@@ -231,9 +210,10 @@
                             <th scope="col">강의 시간</th>
                             <th scope="col">제한 인원</th>
                             <th scope="col">현재 신청 인원</th>
+                            <th scope="col">신청</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="basket-list">
                         <tr>
                             <td>인문대학</td>
                             <td>행정심리학부</td>
@@ -248,7 +228,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="43" onclick="register(this.id)">신청</button>
+                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="register(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -265,7 +245,7 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">신청</button>
+                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="register(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -282,7 +262,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">신청</button>
+                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="register(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -299,7 +279,7 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">신청</button>
+                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="register(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -316,7 +296,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">신청</button>
+                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="register(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -333,32 +313,18 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">신청</button>
+                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="register(this.id)">신청</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                <li class="page-item"><a class="page-link" href="#">7</a></li>
-                <li class="page-item"><a class="page-link" href="#">8</a></li>
-                <li class="page-item"><a class="page-link" href="#">9</a></li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                <li class="page-item"><a class="page-link" href="#">11</a></li>
-                <li class="page-item"><a class="page-link" href="#">12</a></li>
-            </ul>
         </div>
-        <div class="row section main-content">
+        <div class="row rounded border p-4 mb-4">
             <div>
-                <h3>신청현황</h3>
-                <table class="table table-hover">
-                    <thead>
+                <h3 class="mb-4">신청현황</h3>
+                <table class="table table-hover text-center">
+                    <thead class="table-light">
                         <tr>
                             <th scope="col">대학</th>
                             <th scope="col">학과</th>
@@ -372,6 +338,7 @@
                             <th scope="col">강의 시간</th>
                             <th scope="col">제한 인원</th>
                             <th scope="col">현재 신청 인원</th>
+                            <th scope="col">신청</th>
                         </tr>
                     </thead>
                     <tbody id="registration-list">
@@ -389,7 +356,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="9" onclick="cancel(this.id)">취소</button>
+                                <button type="submit" id="9" class="btn btn-primary btn-sm" onclick="cancel(this.id)">취소</button>
                             </td>
                         </tr>
                         <tr>
@@ -406,7 +373,7 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">취소</button>
+                                <button type="submit" id="9" class="btn btn-primary btn-sm" onclick="cancel(this.id)">취소</button>
                             </td>
                         </tr>
                         <tr>
@@ -423,7 +390,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">취소</button>
+                                <button type="submit" id="9" class="btn btn-primary btn-sm" onclick="cancel(this.id)">취소</button>
                             </td>
                         </tr>
                         <tr>
@@ -440,7 +407,7 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">취소</button>
+                                <button type="submit" id="9" class="btn btn-primary btn-sm" onclick="cancel(this.id)">취소</button>
                             </td>
                         </tr>
                         <tr>
@@ -457,7 +424,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">취소</button>
+                                <button type="submit" id="9" class="btn btn-primary btn-sm" onclick="cancel(this.id)">취소</button>
                             </td>
                         </tr>
                         <tr>
@@ -474,26 +441,12 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit">취소</button>
+                                <button type="submit" id="9" class="btn btn-primary btn-sm" onclick="cancel(this.id)">취소</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                <li class="page-item"><a class="page-link" href="#">7</a></li>
-                <li class="page-item"><a class="page-link" href="#">8</a></li>
-                <li class="page-item"><a class="page-link" href="#">9</a></li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                <li class="page-item"><a class="page-link" href="#">11</a></li>
-                <li class="page-item"><a class="page-link" href="#">12</a></li>
-            </ul>
         </div>
         <script src="../static/js/app/course-registration.js"></script>
 </body>
