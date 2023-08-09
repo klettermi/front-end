@@ -1,61 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이노캠 | 교수님 티켓팅</title>
 
-    <link href="../static/css/styles.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap"
-        rel="stylesheet" />
-
-    <title>수강신청 페이지</title>
-
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    <link href="../static/css/index.css" rel="stylesheet" />
+    <link href="../static/css/default.css" rel="stylesheet" />
 </head>
 
-<body class="body" onload="getPeriod()">
-    <div class="wrap-contents">
-        <div class="contents">
-            <div class="notice">
-                <h1 class="title-name">
-                    NOTICE
-                    <h2 class="project-name">
-                        교수님 티켓팅
-                    </h2>
-                    <a href="../total-course.html" style="text-decoration: underline black;">
-                        <h4 class="courses-page-link" style="color: black;">
-                            수강과목조회
-                        </h4>
-                    </a>
-                </h1>
-                <div class="notice-0">
-                    예비수강신청: 2023-08-01 ~ 2023-08-03<br>
-                    본수강신청: 2023-08-04 ~ 2023-08-05
+<body class="bg-light" onload="getPeriod()">
+    <div class="container shadow">
+        <div class="row p-4">
+            <div class="col p-3">
+                <h1 class="title pb-3 mb-3"> NOTICE </h1>
+                <h4>2023학년도 2학기 수강신청</h4>
+                <ul class="notice">
+                    <li>예비수강신청: 2023-08-01 10:00 ~ 2023-08-03 18:00</li>
+                    <li>본수강신청: 2023-08-04 10:00 ~ 2023-08-05 18:00</li>
+                </ul>
+                <div class="mb-4">
+                    1. 이노베이션캠프 챌린저 11조의 <span class="fw-bold">"교수님 티켓팅 프로젝트"</span>입니다.<br>
+                    - 원하는 수강과목을 쟁탈하기 위해서는 공연 티켓팅을 하는 마음가짐과 같아야합니다.
                 </div>
-                <div class="notice-1">
-                    1. 이노베이션캠프 챌린저 11조의 "교수님 티켓팅 프로젝트"입니다.<br>
-                    원하는 수강과목을 쟁탈하기 위해서는 공연 티켓팅을 하는 마음가짐과 같아야합니다.
+                <div class="mb-4">
+                    2. 이노베이션 캠프는 예비 수강신청 기간에 장바구니로 원하는 수강과목을 미리 담을 수 있습니다.<br>
+                    - 예비 수강신청 기간을 꼭 확인하시기 바랍니다.
                 </div>
-                <div class="notice-1">
-                    2. 이노베이션 캠프는 예비수강신청에 장바구니로 원하는 수강과목을 미리 담을 수 있습니다.<br>
-                    예비수강신청기간을 꼭 확인하시기 바랍니다.
+                <div class="mb-4">
+                    3. 본 수강신청 기간에는 장바구니에 미리 담아둔 수강과목을 조회없이 바로 신청 가능합니다.<br>
+                    - 본 수강신청기간을 꼭 확인하시기 바랍니다.<br>
+                    - 장바구니에 담아 놓지 않은 과목은 조회 후 신청 가능합니다.
                 </div>
-                <div class="notice-1">
-                    3. 본 수강신청기간에는 장바구니에 미리 담아둔 수강과목을 조회없이 바로 신청가능합니다.<br>
-                    본 수강신청기간을 꼭 확인하시기 바랍니다.
+                <div>
+                    4. 수강과목은 아래의 강의 목록 조회에서 확인하시기 바랍니다.<br>
+                    <button class="btn btn-primary mt-3" type="button" onclick="location.href='../total-course.html'">강의 목록 조회</button>
                 </div>
             </div>
-            <div class="login-0">
-                <div class="login-1">
-                    <div class="logo"></div>
-                    <div class="logo2"></div>
+            <div class="login-box col-4 p-4 ms-3">
+                <div class="login m-4">
+                    <img src="static/images/logo1.png" class="logo1 img-fluid" alt="...">
+                    <img src="static/images/logo2.png" class="logo2 img-fluid" alt="...">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="studentNum" placeholder="StudentId">
                         <label for="floatingInput">학번</label>
@@ -64,14 +57,16 @@
                         <input type="password" class="form-control" id="password" placeholder="Password">
                         <label for="floatingPassword">비밀번호</label>
                     </div>
-                    <div class="d-grid gap-2">
+                    <div class="d-grid">
                         <button class="btn btn-primary" type="button" onclick="login()">로그인</button>
                     </div>
                 </div>
             </div>
+
         </div>
+
     </div>
-    </div>
+
     <script src="../static/js/app/index.js"></script>
 </body>
 
