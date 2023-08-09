@@ -2,7 +2,7 @@
 <html lang="kr">
 <head>
         <meta charset="UTF-8">
-        <title>시간표</title>
+        <title>이노캠 | 시간표</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -11,6 +11,7 @@
             crossorigin="anonymous"></script>
         <script src="../static/js/app/academic-calendar.js"></script>
         <link href="../static/css/styles.css" rel="stylesheet" />
+        <link href="../static/css/default.css" rel="stylesheet" />
     <style>
         table, th, td {
             border: 1px solid black;
@@ -28,7 +29,20 @@
     </style>
 </head>
 <body onload = "getTimetable(); changeH1()">
-    <div class="container text-center">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="static/images/logo1.png" alt="logo1" height="24" class="d-inline-block align-text-top pe-3">
+                <span class="align-text-top h5">수강신청</span>
+            </a>
+            <div>
+                <span class="navbar-text me-3">2023년도 2학기 수강 신청</span>
+                <span class="navbar-text me-3">홍길동 님</span>
+                <button type="button" id="logout" class="nav-item btn btn-outline-primary btn-sm me-2" onclick="logout()">로그아웃</button>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" >
         <div id="select_area" class="section">
             <div class="container text-center" style="background-color: white;">
                 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
@@ -38,20 +52,20 @@
             </div>
             <div class="container text-center" style="background-color: white;">
                 <!-- 시간표 -->
-                <table id="table" style="width:100%">
+                <table id="table" style="width:100%;">
                     <tr>
                     <th> </th>
-                    <th>월</th>
-                    <th>화</th>
-                    <th>수</th>
-                    <th>목</th>
-                    <th>금</th>
-                    <th>토</th>
-                    <th>일</th>
+                    <th style="background-color: #f8f9fa;">월</th>
+                    <th style="background-color: #f8f9fa;">화</th>
+                    <th style="background-color: #f8f9fa;">수</th>
+                    <th style="background-color: #f8f9fa;">목</th>
+                    <th style="background-color: #f8f9fa;">금</th>
+                    <th style="background-color: #f8f9fa;">토</th>
+                    <th style="background-color: #f8f9fa;">일</th>
                     </tr>
             
                     <tr>
-                        <th>1교시</th>
+                        <th style="background-color: #f8f9fa;">1교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -61,7 +75,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>2교시</th>
+                        <th style="background-color: #f8f9fa;">2교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -71,7 +85,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>3교시</th>
+                        <th style="background-color: #f8f9fa;">3교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -81,7 +95,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>4교시</th>
+                        <th style="background-color: #f8f9fa;">4교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -91,7 +105,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>5교시</th>
+                        <th style="background-color: #f8f9fa;">5교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -101,7 +115,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>6교시</th>
+                        <th style="background-color: #f8f9fa;">6교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -111,7 +125,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>7교시</th>
+                        <th style="background-color: #f8f9fa;">7교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -121,7 +135,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>8교시</th>
+                        <th style="background-color: #f8f9fa;">8교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -131,7 +145,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>9교시</th>
+                        <th style="background-color: #f8f9fa;">9교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -141,7 +155,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>10교시</th>
+                        <th style="background-color: #f8f9fa;">10교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -151,7 +165,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>11교시</th>
+                        <th style="background-color: #f8f9fa;">11교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -161,7 +175,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>12교시</th>
+                        <th style="background-color: #f8f9fa;">12교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -171,7 +185,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>13교시</th>
+                        <th style="background-color: #f8f9fa;">13교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -181,7 +195,7 @@
                         <td> </td>
                     </tr>
                     <tr>
-                        <th>14교시</th>
+                        <th style="background-color: #f8f9fa;">14교시</th>
                         <td> </td>
                         <td> </td>
                         <td> </td>

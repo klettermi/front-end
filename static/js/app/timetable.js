@@ -22,7 +22,9 @@ function getTimetable(){
                 var table = document.getElementById("table");
 
                 var weekName = ['월', '화', '수', '목', '금', '토', '일'];
-                var colorList = ['#FFE3EE', '#FFF0F5', '#FFE4E1', '#FFC0CB', '#FFB0CF', '#FFDCFF', '#FFC3FA', '#FFB4FF', '#FF6EED', '#F4B6D9', '#FFB0D9'];
+                var colorList = ['#7FFFD4', '#B0E0E6', '#AFEEEE', '#ADD8E6', '#B0C4DE',
+                                 '#87CEEB', '#87CEFA', '#48D1CC', '#40E0D0', '#00CED1', 
+                                 '#00FFFF', '#00BFFF', '#1E90FF', '#6495ED', '#6495ED',];
 
                 var table = document.getElementById("table");
                 var tbody = document.getElementById("table").getElementsByTagName("tbody")[1];
