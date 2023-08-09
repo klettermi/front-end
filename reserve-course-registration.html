@@ -36,11 +36,15 @@
             <div class="row mb-2">
                 <div class="col-1">구분</div>
                 <div class="col-3">
-                    <select class="form-select"  aria-label="Small select example">
-                        <option selected>선택</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select id="sort" class="form-select"  aria-label="Small select example">
+                        <option value="" selected>선택</option>
+                        <option value="기초교양">기초교양</option>
+                        <option value="균형교양">균형교양</option>
+                        <option value="학문기초">학문기초</option>
+                        <option value="교직">교직</option>
+                        <option value="자유선택">자유선택</option>
+                        <option value="전공선택">전공선택</option>
+                        <option value="전공필수">전공필수</option>
                     </select>
                 </div>
                 <div class="col-2">과목코드</div>
@@ -48,25 +52,76 @@
                     <input class="form-control" aria-label="Search">
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-outline-primary">검색</button>
+                    <button type="button" class="btn btn-outline-primary" onclick="search_courses()">검색</button>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-1">대학</div>
+                <div class="col-3">
+                    <select id="college" class="form-select" onchange="changeCollege(this.value)"
+                            aria-label="Small select example">
+                        <option value="" selected>선택</option>
+                        <option value="1">교양교육원</option>
+                        <option value="2">IT대학</option>
+                        <option value="3">사회과학대학</option>
+                        <option value="4">사범대학</option>
+                        <option value="5">경영대학</option>
+                        <option value="6">인문과학연구소</option>
+                        <option value="7">인문대학</option>
+                        <option value="8">문화예술·공과대학</option>
+                        <option value="9">독립학부</option>
+                        <option value="10">교육혁신본부</option>
+                        <option value="11">법학전문대학원</option>
+                        <option value="12">국제교류처</option>
+                        <option value="13">차세대반도체혁신공유대학사업단</option>
+                        <option value="14">의생명과학대학</option>
+                        <option value="15">자연과학대학</option>
+                        <option value="16">농업생명과학대학</option>
+                        <option value="17">동물생명과학대학</option>
+                        <option value="18">의학전문대학원</option>
+                        <option value="19">산림환경과학대학</option>
+                        <option value="20">교원양성지원센터</option>
+                        <option value="21">LINC3.0사업단</option>
+                        <option value="22">학생처</option>
+                        <option value="23">산학협력단</option>
+                        <option value="24">소프트웨어중심대학사업단</option>
+                        <option value="25">창업중심대학사업단</option>
+                        <option value="26">학군단</option>
+                        <option value="27">에너지신산업혁신공유대학사업단</option>
+                        <option value="28">수의과대학</option>
+                        <option value="29">약학대학</option>
+                        <option value="30">간호대학</option>
+                        <option value="31">융합·연계전공</option>
+                        <option value="32">의과대학</option>
+                        <option value="33">강원문화연구소</option>
+                        <option value="34">통일강원연구원</option>
+                        <option value="35">LINC사업단</option>
+                        <option value="36">창업지원단</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-1">학과</div>
+                <div class="col-3">
+                    <select id="depart" class="form-select" onchange="changeDepartment(this.value)"
+                            aria-label="Small select example">
+                        <option value="" selected>선택</option>
+                    </select>
                 </div>
             </div>
             <div class="row">
-                <div class="col-1">학과</div>
+                <div class="col-1">전공</div>
                 <div class="col-3">
-                    <select class="form-select" aria-label="Small select example">
-                        <option selected>선택</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select id="major" class="form-select" aria-label="Small select example">
+                        <option value="" selected>선택</option>
                     </select>
                 </div>
             </div>
         </div>
 
         <div class="row rounded border p-4 mb-4">
-            <div>
-                <h3 class="mb-4">조회 목록</h3>
+            <h3 class="mb-4">조회 목록</h3>
+            <div class="main-content">
                 <table class="table table-hover text-center">
                     <thead class="table-light">
                         <tr>
@@ -100,7 +155,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="register(this.id)">신청</button>
+                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="registerToBasket(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -117,7 +172,7 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="register(this.id)">신청</button>
+                                <button type="submit" id="4" class="btn btn-primary btn-sm" onclick="registerToBasket(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -134,7 +189,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="register(this.id)">신청</button>
+                                <button type="submit" id="10" class="btn btn-primary btn-sm" onclick="registerToBasket(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -151,7 +206,7 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="register(this.id)">신청</button>
+                                <button type="submit" id="11" class="btn btn-primary btn-sm" onclick="registerToBasket(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -168,7 +223,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="register(this.id)">신청</button>
+                                <button type="submit" id="17" class="btn btn-primary btn-sm" onclick="registerToBasket(this.id)">신청</button>
                             </td>
                         </tr>
                         <tr>
@@ -185,7 +240,7 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="1" class="btn btn-primary btn-sm" onclick="register(this.id)">신청</button>
+                                <button type="submit" id="19" class="btn btn-primary btn-sm" onclick="registerToBasket(this.id)">신청</button>
                             </td>
                         </tr>
                     </tbody>
@@ -193,8 +248,8 @@
             </div>
         </div>
         <div class="row rounded border p-4 mb-4">
-            <div>
-                <h3 class="mb-4">장바구니</h3>
+            <h3 class="mb-4">장바구니</h3>
+            <div class="main-content">
                 <table class="table table-hover text-center">
                     <thead class="table-light">
                         <tr>
@@ -228,7 +283,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="register(this.id)">신청</button>
+                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="cancelFromBasket(this.id)">취소</button>
                             </td>
                         </tr>
                         <tr>
@@ -245,7 +300,7 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="register(this.id)">신청</button>
+                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="cancelFromBasket(this.id)">취소</button>
                             </td>
                         </tr>
                         <tr>
@@ -262,7 +317,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="register(this.id)">신청</button>
+                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="cancelFromBasket(this.id)">취소</button>
                             </td>
                         </tr>
                         <tr>
@@ -279,7 +334,7 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="register(this.id)">신청</button>
+                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="cancelFromBasket(this.id)">취소</button>
                             </td>
                         </tr>
                         <tr>
@@ -296,7 +351,7 @@
                             <td>45</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="register(this.id)">신청</button>
+                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="cancelFromBasket(this.id)">취소</button>
                             </td>
                         </tr>
                         <tr>
@@ -313,14 +368,15 @@
                             <td>60</td>
                             <td>0</td>
                             <td>
-                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="register(this.id)">신청</button>
+                                <button type="submit" id="43" class="btn btn-primary btn-sm" onclick onclick="cancelFromBasket(this.id)">취소</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <script src="../static/js/app/course-registration.js"></script>
+    </div>
+        <script src="../static/js/app/select-controller.js"></script>
+        <script src="../static/js/app/reserve-course-registration.js"></script>
 </body>
-
 </html>
