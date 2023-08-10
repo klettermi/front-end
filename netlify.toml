@@ -1,8 +1,0 @@
-
-[build]
-  command = "npm run build"
-  publish = "build"
-
-[context.production.environment]
-  BASE_URL = "BASE_URL"
-  
