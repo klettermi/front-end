@@ -1,5 +1,5 @@
 function getPeriod(){
-    let timetableUrl = "http://localhost:8080/api/period"
+    let timetableUrl = `${BASE_URL}/api/period`
     let token = localStorage.getItem("Authorization");
     fetch(timetableUrl, {
         method: "GET",

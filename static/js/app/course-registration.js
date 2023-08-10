@@ -18,7 +18,7 @@ function search_courses() {
     const sort = $("#sort option:selected").val();
     const major = $("#major option:selected").val();
 
-    const searchUrl = "http://localhost:8080/api/courses"
+    const searchUrl = `${BASE_URL}/api/courses`
     const params = {  // 필요한 query params를 {} 형태에 담아준다.
         year: year,
         semester: semester,
@@ -91,7 +91,7 @@ function search_courses() {
 
 
 function register(courseId) {
-    let url = "http://localhost:8080/api/registration/" + courseId;
+    let url = `${BASE_URL}/api/registration/` + courseId;
     let token = localStorage.getItem("Authorization");
     fetch(url, {
         method: "POST",
@@ -111,7 +111,7 @@ function register(courseId) {
 }
 
 function cancel(registrationId) {
-    let url = "http://localhost:8080/api/registration/" + registrationId;
+    let url = `${BASE_URL}/api/registration/` + registrationId;
     let token = localStorage.getItem("Authorization");
     fetch(url, {
         method: "DELETE",
@@ -131,7 +131,7 @@ function cancel(registrationId) {
 }
 
 function getRegistration() {
-    let url = "http://localhost:8080/api/registration";
+    let url = `${BASE_URL}/api/registration`;
     let token = localStorage.getItem("Authorization");
     fetch(url, {
         method: "GET",
@@ -188,7 +188,7 @@ function getRegistration() {
 }
 
 function getCoursesFromBasket() {
-    let url = "http://localhost:8080/api/basket";
+    let url = `${BASE_URL}/api/basket`;
     let token = localStorage.getItem("Authorization");
     fetch(url, {
         method: "GET",
@@ -244,7 +244,7 @@ function getCoursesFromBasket() {
 }
 
 function getUserInfo(){
-    let url = "http://localhost:8080/api/students/info"
+    let url = `${BASE_URL}/api/students/info`
     let token = localStorage.getItem("Authorization");
     fetch(url, {
         method: "GET",

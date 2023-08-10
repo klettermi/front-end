@@ -3,7 +3,7 @@ function changeH1(){
     h1[0].innerText = localStorage.getItem('year') + '학년도 ' + localStorage.getItem('semester') + ' 시간표'
 }
 function getTimetable(){
-    let timetableUrl = "http://localhost:8080/api/students/timetable"
+    let timetableUrl = `${BASE_URL}/api/students/timetable`
     let token = localStorage.getItem("Authorization");
     fetch(timetableUrl, {
         method: "GET",
