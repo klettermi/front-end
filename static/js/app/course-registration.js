@@ -2,6 +2,7 @@ $(document).ready(function () {
     getRegistration();
     getCoursesFromBasket();
     getUserInfo();
+    putInfo();
 });
 
 function logout() {
@@ -10,14 +11,27 @@ function logout() {
 }
 
 function search_courses() {
-    const year = 2023;
-    const semester = 1;
-    const subjectCd = $("#subject-code").text();
+    const year = localStorage.getItem('year');
+    var semester = 0;
+    switch (localStorage.getItem('semester')) {
+        case "1학기" :
+            semester = 1;
+            break;
+        case "2학기":
+            semester = 2;
+            break;
+        case "여름학기":
+            semester = 3;
+            break;
+        case "겨울학기":
+            semester = 4;
+    }
     const college = $("#college option:selected").val();
     const depart = $("#depart option:selected").val();
     const sort = $("#sort option:selected").val();
     const major = $("#major option:selected").val();
-
+    var subjectCd = $("#subject-code").val();
+    
     const searchUrl = `${BASE_URL}/api/courses`
     const params = {  // 필요한 query params를 {} 형태에 담아준다.
         courseYear: year,
@@ -39,26 +53,30 @@ function search_courses() {
     })
         .then((response) => response.json())
         .then((result) => {
-                if (result.success) {
-                    $('#course-list').empty();
+            console.log(result)
+            $('#course-list').empty();
+            if (result.success) {
+                if (result.data == "") {
+                    alert("조회된 데이터가 없습니다.")
+                    return;
+                }
+                result.data.forEach(element => {
+                    const courseId = element.courseId;
+                    const collegeName = element.collegeName;
+                    const departmentName = element.departmentName == null ? '-' : element.departmentName;
+                    const majorName = element.majorName == null ? '-' : element.majorName;
+                    const sort = element.sort;
+                    const subjectCd = element.subjectCd;
+                    const division = element.division;
+                    const subjectName = element.subjectName;
+                    const credit = element.credit;
+                    const professorName = element.professorName;
+                    const timetable = element.timetable;
+                    const limitation = element.limitation;
+                    const numberOfCurrent = element.numberOfCurrent;
 
-                    result.data.forEach(element => {
-                        const courseId = element.courseId;
-                        const collegeName = element.collegeName;
-                        const departmentName = element.departmentName == null ? '-' : element.departmentName;
-                        const majorName = element.majorName == null ? '-' : element.majorName;
-                        const sort = element.sort;
-                        const subjectCd = element.subjectCd;
-                        const division = element.division;
-                        const subjectName = element.subjectName;
-                        const credit = element.credit;
-                        const professorName = element.professorName;
-                        const timetable = element.timetable;
-                        const limitation = element.limitation;
-                        const numberOfCurrent = element.numberOfCurrent;
 
-
-                        let temp = `
+                    let temp = `
                             <tr>
                                 <td>${collegeName}</td>
                                 <td>${departmentName}</td>
@@ -77,12 +95,13 @@ function search_courses() {
                                 </td>
                             </tr>
                             `
-                        $('#course-list').append(temp)
-                    })
-                } else {
-                    console.log("조회 데이터 없음")
-                }
+                    $('#course-list').append(temp)
+                })
+            } else {
+                console.log(result.errors)
+                alert("조회 api 에러");
             }
+        }
         )
         .catch(error => {
             console.error("조회 api 에러", error);
@@ -179,12 +198,12 @@ function getRegistration() {
                         </td>
                     </tr>
                     `
-                $('#registration-list').append(temp)
-            })
-        } else {
-            console.log(result.errors)
-        }
-    });
+                    $('#registration-list').append(temp)
+                })
+            } else {
+                console.log(result.errors)
+            }
+        });
 }
 
 function getCoursesFromBasket() {
@@ -196,27 +215,27 @@ function getCoursesFromBasket() {
             "Authorization": token
         },
     })
-    .then(response => response.json())
-    .then(result => {
-        console.log(result);
-        if (result.success) {
-            $('#basket-list').empty();
-            result.data.forEach(element => {
-                const courseId = element.courseId;
-                const collegeName = element.collegeName;
-                const departmentName = element.departmentName == null ? '-' : element.departmentName;
-                const majorName = element.majorName  == null ? '-' : element.majorName;
-                const sort = element.sort;
-                const subjectCode = element.subjectCd;
-                const division = element.division;
-                const subjectName = element.subjectName;
-                const credit = element.credit;
-                const professorName = element.professorName;
-                const timetable = element.timetable;
-                const limitation = element.limitation;
-                const numberOfBasket = element.numberOfBasket;
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            if (result.success) {
+                $('#basket-list').empty();
+                result.data.forEach(element => {
+                    const courseId = element.courseId;
+                    const collegeName = element.collegeName;
+                    const departmentName = element.departmentName == null ? '-' : element.departmentName;
+                    const majorName = element.majorName == null ? '-' : element.majorName;
+                    const sort = element.sort;
+                    const subjectCode = element.subjectCd;
+                    const division = element.division;
+                    const subjectName = element.subjectName;
+                    const credit = element.credit;
+                    const professorName = element.professorName;
+                    const timetable = element.timetable;
+                    const limitation = element.limitation;
+                    const numberOfBasket = element.numberOfBasket;
 
-                let temp = `
+                    let temp = `
                     <tr>
                         <td>${collegeName}</td>
                         <td>${departmentName}</td>
@@ -235,15 +254,15 @@ function getCoursesFromBasket() {
                         </td>
                     </tr>
                     `
-                $('#basket-list').append(temp)
-            })
-        } else {
-            console.log(result.errors)
-        }
-    });
+                    $('#basket-list').append(temp)
+                })
+            } else {
+                console.log(result.errors)
+            }
+        });
 }
 
-function getUserInfo(){
+function getUserInfo() {
     let url = `${BASE_URL}/api/students/info`
     let token = localStorage.getItem("Authorization");
     fetch(url, {
@@ -253,7 +272,7 @@ function getUserInfo(){
         }
     })
         .then((response) => response.json())
-        .then((result) => { 
+        .then((result) => {
             console.log(result);
             if (result.success) {
                 var data = result.data
@@ -265,15 +284,27 @@ function getUserInfo(){
 
                 let temp = `
                         <tr>
-                            <td>1111111</td>
-                            <td>홍길동</td>
-                            <td>18</td>
-                            <td>3</td>
+                            <td>${studentNum}</td>
+                            <td>${studentNM}</td>
+                            <td>${possibleCredits}</td>
+                            <td>${appliedCredits}</td>
                         </tr>
                         `
                 $('#student-info').append(temp)
-            }else {
+            } else {
                 console.log(result.errors)
             }
         })
+}
+
+function putInfo() {
+    const year = localStorage.getItem('year');
+    const semester = localStorage.getItem('semester');
+    const username = localStorage.getItem('username');
+    const usernumber = localStorage.getItem('usernumber');
+
+    $('#year').text(year);
+    $('#semester').text(semester);
+    $('#username').text(username);
+    $('#usernumber').text(usernumber);
 }

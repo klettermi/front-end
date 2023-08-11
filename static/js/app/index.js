@@ -1,3 +1,7 @@
+$(document).ready(function () {
+    putPeriod();
+});
+
 function login() {
     let student_num = document.getElementById("studentNum").value;
     let password = document.getElementById("password").value;
@@ -33,7 +37,6 @@ function login() {
         alert("로그인 중 에러가 발생하였습니다. 다시 시도해 주세요.");
     });
 }
-
 
 function getUserInfo(){
     let url = `${BASE_URL}/api/students/info`
@@ -92,4 +95,12 @@ function getPeriod(){
             localStorage.setItem('year', year);
             localStorage.setItem('semester', semester);
         })
+}
+
+function putPeriod() {
+    const year = localStorage.getItem('year');
+    const semester = localStorage.getItem('semester');
+
+    $('#year').text(year);
+    $('#semester').text(semester);
 }
