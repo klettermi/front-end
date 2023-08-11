@@ -21,7 +21,9 @@ function login() {
     .then((response) => {
         let token = response.headers.get("Authorization");
         localStorage.setItem("Authorization", token);
-        getUserInfo();
+        if(response.status == 200) {
+            getUserInfo();
+        }
         return response.json();
     })
     .then(data => {
