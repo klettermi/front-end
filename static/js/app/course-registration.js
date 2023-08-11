@@ -12,7 +12,7 @@ function logout() {
 
 function search_courses() {
     const year = localStorage.getItem('year');
-    var semester = 0;
+    let semester = 0;
     switch (localStorage.getItem('semester')) {
         case "1학기" :
             semester = 1;
@@ -30,7 +30,7 @@ function search_courses() {
     const depart = $("#depart option:selected").val();
     const sort = $("#sort option:selected").val();
     const major = $("#major option:selected").val();
-    var subjectCd = $("#subject-code").val();
+    const subjectCd = $("#subject-code").val();
     
     const searchUrl = `${BASE_URL}/api/courses`
     const params = {  // 필요한 query params를 {} 형태에 담아준다.

@@ -2,6 +2,7 @@
 function changeCollege(college) {
     $("#depart").empty()
     $("#major").empty()
+
     const map = new Map()
     switch (Number(college)) {
         case 2:
@@ -60,9 +61,11 @@ function changeCollege(college) {
             map.set(12, '자유전공학부')
             map.set(80, '법학부')
             break;
-        case 10:    // 학과 없이 전공만 존재
-            map.set(21, '지질학전공')
-            makeOptions(map, "major")
+        case 10:    // 유일하게 학과 없이 전공만 존재
+            // map.set(21, '지질학전공')
+            $(`#depart`).append(`<option value="" selected">-</option>`)
+            $(`#major`).append(`<option value="">선택</option>`)
+            $(`#major`).append(`<option value="21">지질학전공</option>`)
             return;
         case 12:
             map.set(17, '언어연수과')
@@ -131,7 +134,7 @@ function changeCollege(college) {
             break;
     }
 
-    makeOptions(map, "depart");
+    makeOptions(map, "depart", "major");
 }
 
 function changeDepartment(depart) {
@@ -288,13 +291,23 @@ function changeDepartment(depart) {
             break;
     }
 
-    makeOptions(map, "major")
+    makeOptions(map, "major", null)
 }
 
-function makeOptions(data, id) {
+function makeOptions(data, id, subId) { // id == "depart" subId == "major" / id == "major" subId == ""
     const position = $(`#` + id)
     position.empty()
-    data.size > 0 ? position.append(`<option value="" selected">선택</option>`) : position.append(`<option value="" selected">-</option>`)
+
+    if(data.size > 0) {
+        position.append(`<option value="" selected">선택</option>`)
+    } else {
+        position.append(`<option value="" selected">-</option>`)
+    }
+
+    if(subId) { // subId == "major" == id is "depart"
+        $(`#`+subId).append(`<option value="" selected">-</option>`)
+    }
+
     data.forEach((value, key) => {
         const temp = `<option value="${key}">${value}</option>`
         position.append(temp)
