@@ -1,34 +1,21 @@
 <!DOCTYPE html>
 <html lang="kr">
+
 <head>
-        <meta charset="UTF-8">
-        <title>이노캠 | 시간표</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-        <script src="../static/js/app/academic-calendar.js"></script>
-        <link href="../static/css/styles.css" rel="stylesheet" />
-        <link href="../static/css/default.css" rel="stylesheet" />
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            text-align: center;
-            width : 100px;
-            height: 40px;
-        }
-        th, td {
-            padding: 20px;
-        }
-        th {
-            text-align: center;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>이노캠 | 시간표</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="../static/js/app/academic-calendar.js"></script>
+    <link href="../static/css/default.css" rel="stylesheet" />
+    <link href="../static/css/timetable.css" rel="stylesheet" />
 </head>
-<body onload = "getTimetable(); changeH1()">
+
+<body onload="getTimetable(); changeH1()">
     <nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom border-bottom bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -38,32 +25,35 @@
             <div>
                 <span class="navbar-text me-3">2023년도 2학기 수강 신청</span>
                 <span class="navbar-text me-3">홍길동 님</span>
-                <button type="button" id="logout" class="nav-item btn btn-outline-primary btn-sm me-2" onclick="logout()">로그아웃</button>
+                <button type="button" id="logout" class="nav-item btn btn-outline-primary btn-sm me-2"
+                    onclick="logout()">로그아웃</button>
             </div>
         </div>
     </nav>
-    <div class="container-fluid" >
+    <div class="container-fluid">
         <div id="select_area" class="section">
             <div class="container text-center" style="background-color: white;">
                 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
                 <div class="row">
-                    <div class="col-sm-12"><h1>시간표</h1></div>
+                    <div class="col-sm-12">
+                        <h1>시간표</h1>
+                    </div>
                 </div>
             </div>
             <div class="container text-center" style="background-color: white;">
                 <!-- 시간표 -->
                 <table id="table" style="width:100%;">
                     <tr>
-                    <th> </th>
-                    <th style="background-color: #f8f9fa;">월</th>
-                    <th style="background-color: #f8f9fa;">화</th>
-                    <th style="background-color: #f8f9fa;">수</th>
-                    <th style="background-color: #f8f9fa;">목</th>
-                    <th style="background-color: #f8f9fa;">금</th>
-                    <th style="background-color: #f8f9fa;">토</th>
-                    <th style="background-color: #f8f9fa;">일</th>
+                        <th> </th>
+                        <th style="background-color: #f8f9fa;">월</th>
+                        <th style="background-color: #f8f9fa;">화</th>
+                        <th style="background-color: #f8f9fa;">수</th>
+                        <th style="background-color: #f8f9fa;">목</th>
+                        <th style="background-color: #f8f9fa;">금</th>
+                        <th style="background-color: #f8f9fa;">토</th>
+                        <th style="background-color: #f8f9fa;">일</th>
                     </tr>
-            
+
                     <tr>
                         <th style="background-color: #f8f9fa;">1교시</th>
                         <td> </td>
@@ -211,4 +201,5 @@
     <script src="../static/js/app/config.js"></script>
     <script src="../static/js/app/timetable.js"></script>
 </body>
+
 </html>

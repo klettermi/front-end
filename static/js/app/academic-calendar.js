@@ -1,4 +1,4 @@
-function getPeriod(){
+function getPeriod() {
     let timetableUrl = `${BASE_URL}/api/period`
     let token = localStorage.getItem("Authorization");
     fetch(timetableUrl, {
@@ -11,12 +11,12 @@ function getPeriod(){
         .then((result) => {
             return result.data
         })
-        .then((result) => {       
-            var date = new Date(result.startTime); 
+        .then((result) => {
+            var date = new Date(result.startTime);
             var year = date.getFullYear();
             var month = date.getMonth() + 1;
             var semester = '';
-            switch(month){
+            switch (month) {
                 case 2:
                     semester = '1학기'
                     break;

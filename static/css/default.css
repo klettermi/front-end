@@ -29,11 +29,13 @@ thead {
     border-bottom: 2px solid;
 }
 
-th, td {
+th,
+td {
     border-left: 1px solid #DEDEDE;
 }
 
-th:first-child, td:first-child {
+th:first-child,
+td:first-child {
     border-left: none;
 }
 
@@ -46,6 +48,7 @@ th:first-child, td:first-child {
 ::-webkit-scrollbar {
     width: 6px;
 }
+
 ::-webkit-scrollbar-thumb {
     border-radius: 3px;
     background-color: gray;

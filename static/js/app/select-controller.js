@@ -292,12 +292,12 @@ function changeDepartment(depart) {
 }
 
 function makeOptions(data, id) {
-    const position = $(`#`+id)
+    const position = $(`#` + id)
     position.empty()
     data.size > 0 ? position.append(`<option value="" selected">선택</option>`) : position.append(`<option value="" selected"></option>`)
     data.forEach((value, key) => {
-            const temp = `<option value="${key}">${value}</option>`
-            position.append(temp)
-        }
+        const temp = `<option value="${key}">${value}</option>`
+        position.append(temp)
+    }
     )
 }
