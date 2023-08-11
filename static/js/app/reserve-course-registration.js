@@ -5,6 +5,8 @@ $(document).ready(function () {
 
 function logout() {
     localStorage.removeItem("Authorization");
+    localStorage.removeItem("username");
+    localStorage.removeItem("usernumber");
     location.replace("/index.html")
 }
 
