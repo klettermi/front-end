@@ -18,13 +18,13 @@ function search_courses() {
 
     const searchUrl = "http://localhost:8080/api/courses"
     const params = {  // 필요한 query params를 {} 형태에 담아준다.
-        year: year,
+        courseYear: year,
         semester: semester,
         subjectCd: subjectCd,
-        collegeNm: college,
-        departNm: depart,
+        collegeId: college,
+        departId: depart,
         sortNm: sort,
-        majorNm: major
+        majorId: major
     };
 
     const queryString = new URLSearchParams(params).toString();
