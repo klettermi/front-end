@@ -1,11 +1,7 @@
 function getPeriod() {
     let timetableUrl = `${BASE_URL}/api/period`
-    let token = localStorage.getItem("Authorization");
     fetch(timetableUrl, {
-        method: "GET",
-        headers: {
-            "Authorization": token
-        }
+        method: "GET"
     })
         .then((response) => response.json())
         .then((result) => {
@@ -13,7 +9,7 @@ function getPeriod() {
         })
         .then((result) => {
             var date = new Date(result.startTime);
-            var year = date.getFullYear();
+            var year = date.getFullYear() + '학년도';
             var month = date.getMonth() + 1;
             var semester = '';
             switch (month) {

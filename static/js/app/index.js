@@ -1,3 +1,7 @@
+$(document).ready(function () {
+    putPeriod();
+});
+
 function login() {
     let student_num = document.getElementById("studentNum").value;
     let password = document.getElementById("password").value;
@@ -31,4 +35,12 @@ function login() {
             console.error("로그인 중 에러발생:", error);
             alert("로그인 중 에러가 발생하였습니다. 다시 시도해 주세요.");
         });
+}
+
+function putPeriod() {
+    const year = localStorage.getItem('year');
+    const semester = localStorage.getItem('semester');
+
+    $('#year').text(year);
+    $('#semester').text(semester);
 }
