@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 function logout() {
     localStorage.removeItem("Authorization");
-    // location.replace("메인페이지 주소")
+    location.replace("/index.html")
 }
 
 function search_courses() {
@@ -16,7 +16,7 @@ function search_courses() {
     const sort = $("#sort option:selected").val();
     const major = $("#major option:selected").val();
 
-    const searchUrl = "http://localhost:8080/api/courses"
+    const searchUrl = `${BASE_URL}/api/courses`
     const params = {  // 필요한 query params를 {} 형태에 담아준다.
         courseYear: year,
         semester: semester,
@@ -89,7 +89,7 @@ function search_courses() {
 
 
 function registerToBasket(courseId) {
-    let url = "http://localhost:8080/api/basket/" + courseId;
+    let url = `${BASE_URL}/api/basket/` + courseId;
     let token = localStorage.getItem("Authorization");
     fetch(url, {
         method: "POST",
@@ -109,7 +109,7 @@ function registerToBasket(courseId) {
 }
 
 function cancelFromBasket(basketId) {
-    let url = "http://localhost:8080/api/basket/" + basketId;
+    let url = `${BASE_URL}/api/basket/` + basketId;
     let token = localStorage.getItem("Authorization");
     fetch(url, {
         method: "DELETE",
@@ -129,7 +129,7 @@ function cancelFromBasket(basketId) {
 }
 
 function getCoursesFromBasket() {
-    let url = "http://localhost:8080/api/basket";
+    let url = `${BASE_URL}/api/basket`;
     let token = localStorage.getItem("Authorization");
     fetch(url, {
         method: "GET",
