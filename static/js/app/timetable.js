@@ -81,3 +81,10 @@ function putInfo() {
     $('#username').text(username);
     $('#usernumber').text(usernumber);
 }
+
+function logout() {
+    localStorage.removeItem("Authorization");
+    localStorage.removeItem("username");
+    localStorage.removeItem("usernumber");
+    location.replace("/index.html")
+}
