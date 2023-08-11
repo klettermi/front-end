@@ -24,8 +24,8 @@
                 <span class="align-text-top h5">수강신청</span>
             </a>
             <div>
-                <span class="navbar-text me-3">2023년도 2학기 수강 신청</span>
-                <span class="navbar-text me-3">홍길동 님</span>
+                <span class="navbar-text me-3"><span id="year"></span>년도 <span id="semester"></span> 수강 신청</span>
+                <span class="navbar-text me-3"><span id="username"></span> 님(<span id="usernumber"></span>)</span>
                 <button type="button" id="logout" class="nav-item btn btn-outline-primary btn-sm me-2"
                     onclick="logout()">로그아웃</button>
             </div>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-2">과목코드</div>
                 <div class="col-3">
-                    <input class="form-control" aria-label="Search">
+                    <input id="subject-code" class="form-control" aria-label="Search">
                 </div>
                 <div class="col-2">
                     <button type="button" class="btn btn-outline-primary" onclick="search_courses()">검색</button>
@@ -175,52 +175,47 @@
             </div>
         </div>
         <div class="row rounded border p-4 mb-4">
-            <div>
-                <h3 class="mb-4">신청현황</h3>
-                <div style="width: 38%; font-size: 15px; margin-bottom: 30px;">
-                    <table class="table table-hover text-center"
-                        style="table-layout: fixed;word-break: break-all;height: auto;">
-                        <thead class="table-light">
-                            <tr>
-                                <th scope="col">학번</th>
-                                <th scope="col">이름</th>
-                                <th scope="col">이수가능학점</th>
-                                <th scope="col">현재신청학점</th>
-                            </tr>
-                            </thread>
-                        <tbody id="student-info">
-                            <tr>
-                                <td>1111111</td>
-                                <td>홍길동</td>
-                                <td>21</td>
-                                <td>0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="row mb-4">
+                <h3 class="col">신청현황</h3>
+                <button class="col-3 btn btn-primary" type="button" onclick="location.href='timetable.html'">시간표 조회</button>
+            </div>
+            <div class="row mb-4">
                 <table class="table table-hover text-center">
                     <thead class="table-light">
                         <tr>
-                            <th scope="col">대학</th>
-                            <th scope="col">학과</th>
-                            <th scope="col">전공</th>
-                            <th scope="col">이수구분</th>
-                            <th scope="col">과목코드</th>
-                            <th scope="col">분반</th>
-                            <th scope="col">교과목명</th>
-                            <th scope="col">학점</th>
-                            <th scope="col">담당교수</th>
-                            <th scope="col">강의 시간</th>
-                            <th scope="col">제한 인원</th>
-                            <th scope="col">현재 신청 인원</th>
-                            <th scope="col">신청</th>
+                            <th scope="col">학번</th>
+                            <th scope="col">이름</th>
+                            <th scope="col">이수가능학점</th>
+                            <th scope="col">현재신청학점</th>
                         </tr>
-                    </thead>
-                    <tbody id="registration-list">
-
+                        </thread>
+                    <tbody id="student-info">
+                        
                     </tbody>
                 </table>
             </div>
+            <table class="table table-hover text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">대학</th>
+                        <th scope="col">학과</th>
+                        <th scope="col">전공</th>
+                        <th scope="col">이수구분</th>
+                        <th scope="col">과목코드</th>
+                        <th scope="col">분반</th>
+                        <th scope="col">교과목명</th>
+                        <th scope="col">학점</th>
+                        <th scope="col">담당교수</th>
+                        <th scope="col">강의 시간</th>
+                        <th scope="col">제한 인원</th>
+                        <th scope="col">현재 신청 인원</th>
+                        <th scope="col">신청</th>
+                    </tr>
+                </thead>
+                <tbody id="registration-list">
+
+                </tbody>
+            </table>
         </div>
     </div>
     <script src="../static/js/app/config.js"></script>

@@ -2,6 +2,7 @@ $(document).ready(function () {
     getRegistration();
     getCoursesFromBasket();
     getUserInfo();
+    putInfo();
 });
 
 function logout() {
@@ -10,14 +11,27 @@ function logout() {
 }
 
 function search_courses() {
-    const year = 2022;
-    const semester = 1;
-    const subjectCd = $("#subject-code").text();
+    const year = localStorage.getItem('year');
+    var semester = 0;
+    switch (localStorage.getItem('semester')) {
+        case "1학기" :
+            semester = 1;
+            break;
+        case "2학기":
+            semester = 2;
+            break;
+        case "여름학기":
+            semester = 3;
+            break;
+        case "겨울학기":
+            semester = 4;
+    }
     const college = $("#college option:selected").val();
     const depart = $("#depart option:selected").val();
     const sort = $("#sort option:selected").val();
     const major = $("#major option:selected").val();
-
+    var subjectCd = $("#subject-code").val();
+    
     const searchUrl = `${BASE_URL}/api/courses`
     const params = {  // 필요한 query params를 {} 형태에 담아준다.
         courseYear: year,
@@ -42,6 +56,10 @@ function search_courses() {
             console.log(result)
             $('#course-list').empty();
             if (result.success) {
+                if (result.data == "") {
+                    alert("조회된 데이터가 없습니다.")
+                    return;
+                }
                 result.data.forEach(element => {
                     const courseId = element.courseId;
                     const collegeName = element.collegeName;
@@ -80,8 +98,8 @@ function search_courses() {
                     $('#course-list').append(temp)
                 })
             } else {
-                console.log("조회 데이터 없음")
-                alert("조회 데이터 없음");
+                console.log(result.errors)
+                alert("조회 api 에러");
             }
         }
         )
@@ -266,10 +284,10 @@ function getUserInfo() {
 
                 let temp = `
                         <tr>
-                            <td>1111111</td>
-                            <td>홍길동</td>
-                            <td>18</td>
-                            <td>3</td>
+                            <td>${studentNum}</td>
+                            <td>${studentNM}</td>
+                            <td>${possibleCredits}</td>
+                            <td>${appliedCredits}</td>
                         </tr>
                         `
                 $('#student-info').append(temp)
@@ -277,4 +295,16 @@ function getUserInfo() {
                 console.log(result.errors)
             }
         })
+}
+
+function putInfo() {
+    const year = localStorage.getItem('year');
+    const semester = localStorage.getItem('semester');
+    const username = localStorage.getItem('username');
+    const usernumber = localStorage.getItem('usernumber');
+
+    $('#year').text(year);
+    $('#semester').text(semester);
+    $('#username').text(username);
+    $('#usernumber').text(usernumber);
 }

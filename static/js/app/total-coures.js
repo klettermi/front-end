@@ -1,5 +1,5 @@
 function search_courses() {
-    const year = $("#year option:selected").text();
+    const year = $("#year option:selected").val();
     const semester = $("#semester option:selected").val();
     const sort = $("#sort option:selected").val();
     const college = $("#college option:selected").val();

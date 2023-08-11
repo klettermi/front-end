@@ -20,11 +20,11 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="static/images/logo1.png" alt="logo1" height="24" class="d-inline-block align-text-top pe-3">
-                <span class="align-text-top h5">수강신청</span>
+                <span class="align-text-top h5">시간표</span>
             </a>
             <div>
-                <span class="navbar-text me-3">2023년도 2학기 수강 신청</span>
-                <span class="navbar-text me-3">홍길동 님</span>
+                <span class="navbar-text me-3"><span id="year"></span>년도 <span id="semester"></span></span>
+                <span class="navbar-text me-3"><span id="username"></span> 님(<span id="usernumber"></span>)</span>
                 <button type="button" id="logout" class="nav-item btn btn-outline-primary btn-sm me-2"
                     onclick="logout()">로그아웃</button>
             </div>
@@ -34,10 +34,8 @@
         <div id="select_area" class="section">
             <div class="container text-center" style="background-color: white;">
                 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h1>시간표</h1>
-                    </div>
+                <div class="row my-4">
+                    <h1>시간표</h1>
                 </div>
             </div>
             <div class="container text-center" style="background-color: white;">

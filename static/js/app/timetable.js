@@ -1,7 +1,12 @@
+$(document).ready(function () {
+    putInfo();
+});
+
 function changeH1() {
     const h1 = document.getElementsByTagName('h1')
     h1[0].innerText = localStorage.getItem('year') + '학년도 ' + localStorage.getItem('semester') + ' 시간표'
 }
+
 function getTimetable() {
     let timetableUrl = `${BASE_URL}/api/students/timetable`
     let token = localStorage.getItem("Authorization");
@@ -65,3 +70,14 @@ function getTimetable() {
         })
 }
 
+function putInfo() {
+    const year = localStorage.getItem('year');
+    const semester = localStorage.getItem('semester');
+    const username = localStorage.getItem('username');
+    const usernumber = localStorage.getItem('usernumber');
+
+    $('#year').text(year);
+    $('#semester').text(semester);
+    $('#username').text(username);
+    $('#usernumber').text(usernumber);
+}

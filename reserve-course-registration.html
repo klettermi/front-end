@@ -24,8 +24,8 @@
                 <span class="align-text-top h5">예비 수강신청</span>
             </a>
             <div>
-                <span class="navbar-text me-3">2023년도 2학기 예비 수강 신청</span>
-                <span class="navbar-text me-3">홍길동 님</span>
+                <span class="navbar-text me-3"><span id="year"></span>년도 <span id="semester"></span> 예비 수강 신청</span>
+                <span class="navbar-text me-3"><span id="username"></span> 님(<span id="usernumber"></span>)</span>
                 <button type="button" id="logout" class="nav-item btn btn-outline-primary btn-sm me-2"
                     onclick="logout()">로그아웃</button>
             </div>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-2">과목코드</div>
                 <div class="col-3">
-                    <input class="form-control" aria-label="Search">
+                    <input id="subject-code" class="form-control" aria-label="Search">
                 </div>
                 <div class="col-2">
                     <button type="button" class="btn btn-outline-primary" onclick="search_courses()">검색</button>
@@ -142,114 +142,7 @@
                         </tr>
                     </thead>
                     <tbody id="course-list">
-                        <tr>
-                            <td>인문대학</td>
-                            <td>행정심리학부</td>
-                            <td>심리학과</td>
-                            <td>균형교양</td>
-                            <td>1220014</td>
-                            <td>1</td>
-                            <td>범죄와심리</td>
-                            <td>3</td>
-                            <td>전우병</td>
-                            <td>월 1 2 3,화 1 2 3</td>
-                            <td>45</td>
-                            <td>0</td>
-                            <td>
-                                <button type="submit" id="1" class="btn btn-primary btn-sm"
-                                    onclick="registerToBasket(this.id)">신청</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>공과대학</td>
-                            <td>환경융합학부</td>
-                            <td>환경공학과</td>
-                            <td>균형교양</td>
-                            <td>1230068</td>
-                            <td>1</td>
-                            <td>인간과환경</td>
-                            <td>3</td>
-                            <td>강신규</td>
-                            <td>월 2 3 4,화 2 3 4</td>
-                            <td>60</td>
-                            <td>0</td>
-                            <td>
-                                <button type="submit" id="4" class="btn btn-primary btn-sm"
-                                    onclick="registerToBasket(this.id)">신청</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>인문대학</td>
-                            <td>행정심리학부</td>
-                            <td>심리학과</td>
-                            <td>균형교양</td>
-                            <td>1220014</td>
-                            <td>1</td>
-                            <td>범죄와심리</td>
-                            <td>3</td>
-                            <td>전우병</td>
-                            <td>월 1 2 3,화 1 2 3</td>
-                            <td>45</td>
-                            <td>0</td>
-                            <td>
-                                <button type="submit" id="10" class="btn btn-primary btn-sm"
-                                    onclick="registerToBasket(this.id)">신청</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>공과대학</td>
-                            <td>환경융합학부</td>
-                            <td>환경공학과</td>
-                            <td>균형교양</td>
-                            <td>1230068</td>
-                            <td>1</td>
-                            <td>인간과환경</td>
-                            <td>3</td>
-                            <td>강신규</td>
-                            <td>월 2 3 4,화 2 3 4</td>
-                            <td>60</td>
-                            <td>0</td>
-                            <td>
-                                <button type="submit" id="11" class="btn btn-primary btn-sm"
-                                    onclick="registerToBasket(this.id)">신청</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>인문대학</td>
-                            <td>행정심리학부</td>
-                            <td>심리학과</td>
-                            <td>균형교양</td>
-                            <td>1220014</td>
-                            <td>1</td>
-                            <td>범죄와심리</td>
-                            <td>3</td>
-                            <td>전우병</td>
-                            <td>월 1 2 3,화 1 2 3</td>
-                            <td>45</td>
-                            <td>0</td>
-                            <td>
-                                <button type="submit" id="17" class="btn btn-primary btn-sm"
-                                    onclick="registerToBasket(this.id)">신청</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>공과대학</td>
-                            <td>환경융합학부</td>
-                            <td>환경공학과</td>
-                            <td>균형교양</td>
-                            <td>1230068</td>
-                            <td>1</td>
-                            <td>인간과환경</td>
-                            <td>3</td>
-                            <td>강신규</td>
-                            <td>월 2 3 4,화 2 3 4</td>
-                            <td>60</td>
-                            <td>0</td>
-                            <td>
-                                <button type="submit" id="19" class="btn btn-primary btn-sm"
-                                    onclick="registerToBasket(this.id)">신청</button>
-                            </td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
