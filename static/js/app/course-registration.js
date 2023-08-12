@@ -1,8 +1,8 @@
 var registeredCourses = [];
 
 $(document).ready(function () {
-    getRegistration();
     getCoursesFromBasket();
+    getRegistration();
     getUserInfo();
     putInfo();
 });
@@ -270,7 +270,8 @@ function getCoursesFromBasket() {
                     $('#basket-list').append(temp)
                 })
             } else {
-                console.log(result.errors)
+                alert(result.errors)
+                location.replace("/index.html")
             }
         });
 }

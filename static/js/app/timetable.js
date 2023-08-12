@@ -20,7 +20,12 @@ function getTimetable() {
     })
         .then((response) => response.json())
         .then((result) => {
-            return result.data
+            if(result.success) {
+                return result.data
+            } else {
+                alert(result.errors)
+                location.replace("/index.html")
+            }
         })
         .then((result) => {
             result.forEach(course => {
