@@ -72,7 +72,7 @@ function search_courses() {
                     const professorName = element.professorName;
                     const timetable = element.timetable;
                     const limitation = element.limitation;
-                    const numberOfCurrent = element.numberOfCurrent;
+                    const numberOfBasket = element.numberOfBasket;
 
 
                     let temp = `
@@ -88,7 +88,7 @@ function search_courses() {
                                 <td>${professorName}</td>
                                 <td>${timetable}</td>
                                 <td>${limitation}</td>
-                                <td>${numberOfCurrent}</td>
+                                <td>${numberOfBasket}</td>
                                 <td>
                                     <button type="submit" class="btn btn-primary btn-sm" onclick="registerToBasket(${courseId})">신청</button>
                                 </td>
