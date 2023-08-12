@@ -210,8 +210,10 @@ function putInfo() {
     const year = localStorage.getItem('year');
     const semester = localStorage.getItem('semester');
     const username = localStorage.getItem('username');
+    const usernumber = localStorage.getItem('usernumber');
 
     $('#year').text(year);
     $('#semester').text(semester);
     $('#username').text(username);
+    $('#usernumber').text(usernumber);
 }

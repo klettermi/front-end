@@ -19,12 +19,15 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand">
                 <img src="static/images/logo1.png" alt="logo1" height="24" class="d-inline-block align-text-top pe-3">
-                <span class="align-text-top h5">예비 수강신청</span>
+                <span class="align-text-top h5" style="color: darkgray; font-size: larger;">예비수강신청</span>
             </a>
             <div>
-                <span class="navbar-text me-3"><span id="year"></span>년도 <span id="semester"></span> 예비 수강 신청</span>
+                <span class="navbar-text me-3">연도별 강의 조회</span>
+                <button class="nav-item btn btn-outline-primary btn-sm me-2" type="button" onclick="window.open('../total-course.html')">강의
+                    목록 조회</button>
+                <span class="navbar-text me-3" style="margin-left: 20px;"><span id="year"></span>년도 <span id="semester"></span> 예비 수강 신청</span>
                 <span class="navbar-text me-3"><span id="username"></span> 님(<span id="usernumber"></span>)</span>
                 <button type="button" id="logout" class="nav-item btn btn-outline-primary btn-sm me-2"
                     onclick="logout()">로그아웃</button>

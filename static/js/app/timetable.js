@@ -1,5 +1,7 @@
 $(document).ready(function () {
     putInfo();
+    changeH1();
+    getTimetable();
 });
 
 function changeH1() {
@@ -21,9 +23,8 @@ function getTimetable() {
             return result.data
         })
         .then((result) => {
-            result.forEach(courses => {
-                courses = result;
-
+            result.forEach(course => {
+                console.log(course)
                 var table = document.getElementById("table");
 
                 var weekName = ['월', '화', '수', '목', '금', '토', '일'];
@@ -33,30 +34,26 @@ function getTimetable() {
 
                 var table = document.getElementById("table");
                 var tbody = document.getElementById("table").getElementsByTagName("tbody")[1];
+                var colorRandom = Math.floor(Math.random() * 11);
+                var name = course.courseNM;
+                for (var i = 0; i < course.timetable.length; i++) {
+                    var week = searchWeek(course.timetable[i][0]);
+                    var start_time = Number(course.timetable[i][1]);
+                    var end_time = Number(course.timetable[i][course.timetable[i].length - 1]);
+                    var row = table.rows[start_time];
+                    var cell = row.cells[week];
+                    var color = colorList[colorRandom];
+                    cell.textContent = name;
+                    cell.setAttribute("style", "background: " + color);
 
-                for (var k = 0; k < courses.length; k++) {
-                    var course = courses[k];
-                    var colorRandom = Math.floor(Math.random() * 11);
-                    var name = course.courseNM;
-                    for (var i = 0; i < course.timetable.length; i++) {
-                        var week = searchWeek(course.timetable[i][0]);
-                        var start_time = Number(course.timetable[i][1]);
-                        var end_time = Number(course.timetable[i][course.timetable[i].length - 1]);
-                        var row = table.rows[start_time];
-                        var cell = row.cells[week];
-                        var color = colorList[colorRandom];
-                        cell.textContent = name;
-                        cell.setAttribute("style", "background: " + color);
-
-                        if (end_time - start_time != 0) {
-                            cell.setAttribute("rowspan", end_time - start_time + 1);
-                            for (var j = start_time + 1; j <= end_time; j++) {
-                                table.rows[j].deleteCell(-1);
-                            }
+                    if (end_time - start_time != 0) {
+                        cell.setAttribute("rowspan", end_time - start_time + 1);
+                        for (var j = start_time + 1; j <= end_time; j++) {
+                            table.rows[j].deleteCell(-1);
                         }
                     }
                 }
-
+        
                 function searchWeek(week) {
                     var weekNum;
                     for (var i = 0; i < weekName.length; i++) {
