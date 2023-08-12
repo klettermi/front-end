@@ -275,11 +275,6 @@ function getCoursesFromBasket() {
         });
 }
 
-// function checkIfRegistered(courseId) {
-//     console.log(registeredCourses);
-//     return (registeredCourses.findIndex(courseId) != -1) ? true : false;
-// }
-
 function getUserInfo() {
     let url = `${BASE_URL}/api/students/info`
     let token = localStorage.getItem("Authorization");
