@@ -1,3 +1,5 @@
+var registeredCourses = [];
+
 $(document).ready(function () {
     getRegistration();
     getCoursesFromBasket();
@@ -110,7 +112,6 @@ function search_courses() {
         });
 }
 
-
 function register(courseId) {
     let url = `${BASE_URL}/api/registration/` + courseId;
     let token = localStorage.getItem("Authorization");
@@ -120,15 +121,15 @@ function register(courseId) {
             "Authorization": token
         },
     })
-        .then(response => response.json())
-        .then(result => {
-            if (result.success) {
-                alert(result.msg);
-                location.reload();
-            } else {
-                alert(result.errors);
-            }
-        });
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            alert(result.msg);
+            location.reload();
+        } else {
+            alert(result.errors);
+        }
+    });
 }
 
 function cancel(registrationId) {
@@ -168,6 +169,7 @@ function getRegistration() {
 
                 result.data.forEach(element => {
                     const registrationId = element.registrationId;
+                    const courseId = element.courseId;
                     const collegeName = element.collegeName;
                     const departmentName = element.departmentName == null ? '-' : element.departmentName;
                     const majorName = element.majorName == null ? '-' : element.majorName;
@@ -201,6 +203,7 @@ function getRegistration() {
                     </tr>
                     `
                     $('#registration-list').append(temp)
+                    registeredCourses.push(courseId);
                 })
             } else {
                 console.log(result.errors)
@@ -251,11 +254,19 @@ function getCoursesFromBasket() {
                         <td>${timetable}</td>
                         <td>${limitation}</td>
                         <td>${numberOfBasket}</td>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-sm" onclick="register(${courseId})">신청</button>
-                        </td>
-                    </tr>
                     `
+
+                    if (registeredCourses.indexOf(courseId) != -1) {
+                        temp += `<td>
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="register(${courseId})" disabled>신청 완료</button>
+                                </td>`;
+                    } else {
+                        temp += `<td>
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="register(${courseId})">신청</button>
+                                </td>`;
+                    }
+                    temp += `</tr>`;
+
                     $('#basket-list').append(temp)
                 })
             } else {

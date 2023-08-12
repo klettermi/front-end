@@ -15,6 +15,11 @@
     background-color: #3D90D9;
 }
 
+.btn-primary:disabled {
+    border-color: gray;
+    background-color: gray;
+}
+
 .btn-outline-primary {
     border-color: #3D90D9;
     color: #3D90D9;
