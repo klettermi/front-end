@@ -28,8 +28,8 @@
 
     <div class="container">
         <div id="search_list" class="row rounded border p-4 my-4">
-            <div class="row mb-2">
-                <div class="col-sm-1">년도</div>
+            <div class="row mb-3">
+                <div class="col-sm-1" id="text_year">년도(*)</div>
                 <div class="col-sm-2">
                     <select id="year" class="form-select form-select-sm" aria-label="Small select example">
                         <option selected>선택</option>
@@ -37,7 +37,7 @@
                         <option value="2022">2022년도</option>
                     </select>
                 </div>
-                <div class="col-sm-1">학기</div>
+                <div class="col-sm-1" id="text_semester">학기(*)</div>
                 <div class="col-sm-2">
                     <select id="semester" class="form-select form-select-sm" aria-label="Small select example">
                         <option selected>선택</option>
@@ -47,25 +47,14 @@
                         <option value="4">가을계절</option>
                     </select>
                 </div>
-                <div class="col-sm-1">구분</div>
-                <div class="col-sm-2">
-                    <select id="sort" class="form-select form-select-sm" aria-label="Small select example">
-                        <option value="" selected>선택</option>
-                        <option value="기초교양">기초교양</option>
-                        <option value="균형교양">균형교양</option>
-                        <option value="학문기초">학문기초</option>
-                        <option value="교직">교직</option>
-                        <option value="자유선택">자유선택</option>
-                        <option value="전공선택">전공선택</option>
-                        <option value="전공필수">전공필수</option>
-                    </select>
-                </div>
+                <div class="col-sm-2" style="margin-left: auto">* 필수 입력</div>
             </div>
+            <hr>
             <div class="row mb-2">
-                <div class="col-sm-1">대학</div>
+                <div class="col-sm-1" id="text_college">대학(#)</div>
                 <div class="col-sm-3">
                     <select id="college" class="form-select form-select-sm" onchange="changeCollege(this.value)"
-                        aria-label="Small select example">
+                            aria-label="Small select example">
                         <option value="" selected>선택</option>
                         <option value="1">교양교육원</option>
                         <option value="2">IT대학</option>
@@ -105,30 +94,51 @@
                         <option value="36">창업지원단</option>
                     </select>
                 </div>
-                <div class="col-sm-1" style="width: 90px;">학과</div>
+                <div class="col-sm-1">학과</div>
                 <div class="col-sm-3">
                     <select id="depart" class="form-select form-select-sm" onchange="changeDepartment(this.value)"
-                        aria-label="Small select example">
+                            aria-label="Small select example">
                         <option value="" selected>선택</option>
                     </select>
                 </div>
+                <div class="col-sm-2" style="margin-left: auto"># 둘 중 하나 필수</div>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-sm-1">전공</div>
                 <div class="col-sm-3">
                     <select id="major" class="form-select form-select-sm" aria-label="Small select example">
                         <option value="" selected>선택</option>
                     </select>
                 </div>
-                <div class="col-sm-2" style="width: 90px;">과목코드</div>
+                <div class="col-sm-1" id="text_sort">구분(#)</div>
                 <div class="col-sm-3">
-                    <input id="subject-code" class="form-control form-control-sm" aria-label="Search" type="number">
+                    <select id="sort" class="form-select form-select-sm" aria-label="Small select example">
+                        <option value="" selected>선택</option>
+                        <option value="기초교양">기초교양</option>
+                        <option value="균형교양">균형교양</option>
+                        <option value="학문기초">학문기초</option>
+                        <option value="교직">교직</option>
+                        <option value="자유선택">자유선택</option>
+                        <option value="전공선택">전공선택</option>
+                        <option value="전공필수">전공필수</option>
+                    </select>
                 </div>
                 <div class="col-sm-2">
                     <button type="button" class="btn btn-outline-primary btn-sm" onclick="search_courses()">검색</button>
                 </div>
             </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-1">과목코드</div>
+                <div class="col-sm-3">
+                    <input id="subject-code" class="form-control form-control-sm" aria-label="Search" type="number">
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="search_courses_by_subjectCd()">검색</button>
+                </div>
+            </div>
         </div>
+
         <div class="row rounded border p-4 mb-4">
             <h3 class="mb-4">조회 목록</h3>
             <div class="main-content">
@@ -157,6 +167,6 @@
         <script src="static/js/app/config.js"></script>
         <script src="static/js/app/select-controller.js"></script>
         <script src="static/js/app/total-coures.js"></script>
+    </div>
 </body>
-
 </html>

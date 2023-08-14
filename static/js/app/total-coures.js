@@ -5,18 +5,51 @@ function search_courses() {
     const college = $("#college option:selected").val();
     const depart = $("#depart option:selected").val();
     const major = $("#major option:selected").val();
-    const subjectCd = $("#subject-code").val();
 
-    const searchUrl = `${BASE_URL}/api/courses`
+    if (!year || !semester || (!college && !sort)) {
+        $("#text_college").css("color", "red")
+        $("#text_year").css("color", "red")
+        $("#text_semester").css("color", "red")
+        $("#text_sort").css("color", "red")
+        alert("필수 입력 정보를 확인해주세요.")
+        return;
+    }
+
+    $("#text_college").css("color", "black")
+    $("#text_year").css("color", "black")
+    $("#text_semester").css("color", "black")
+    $("#text_sort").css("color", "black")
+
     const params = {  // 필요한 query params를 {} 형태에 담아준다.
         courseYear: year,
         semester: semester,
-        subjectCd: subjectCd,
         collegeId: college,
         departId: depart,
         sortNm: sort,
         majorId: major
     };
+
+    search_api(params)
+}
+
+function search_courses_by_subjectCd() {
+    const subjectCd = $("#subject-code").val();
+
+    if(!subjectCd) {
+        alert("과목 코드를 입력해주세요.")
+        return;
+    }
+
+    const params = {  // 필요한 query params를 {} 형태에 담아준다.
+        subjectCd: subjectCd
+    };
+
+    search_api(params)
+}
+
+function search_api(params) {
+
+    const searchUrl = `${BASE_URL}/api/courses`
 
     const queryString = new URLSearchParams(params).toString();
     const requrl = `${searchUrl}?${queryString}`;
@@ -28,30 +61,30 @@ function search_courses() {
     })
         .then((response) => response.json())
         .then((result) => {
-            console.log(result)
-            $('#course-list').empty();
-            if (result.success) {
-                if (result.data == "") {
-                    alert("조회된 데이터가 없습니다.")
-                    return;
-                }
-                result.data.forEach(element => {
-                    const courseId = element.courseId;
-                    const collegeName = element.collegeName;
-                    const departmentName = element.departmentName == null ? '-' : element.departmentName;
-                    const majorName = element.majorName == null ? '-' : element.majorName;
-                    const sort = element.sort;
-                    const subjectCd = element.subjectCd;
-                    const division = element.division;
-                    const subjectName = element.subjectName;
-                    const credit = element.credit;
-                    const professorName = element.professorName;
-                    const timetable = element.timetable;
-                    const limitation = element.limitation;
-                    const numberOfCurrent = element.numberOfCurrent;
+                console.log(result)
+                $('#course-list').empty();
+                if (result.success) {
+                    if (result.data == "") {
+                        alert("조회된 데이터가 없습니다.")
+                        return;
+                    }
+                    result.data.forEach(element => {
+                        const courseId = element.courseId;
+                        const collegeName = element.collegeName;
+                        const departmentName = element.departmentName == null ? '-' : element.departmentName;
+                        const majorName = element.majorName == null ? '-' : element.majorName;
+                        const sort = element.sort;
+                        const subjectCd = element.subjectCd;
+                        const division = element.division;
+                        const subjectName = element.subjectName;
+                        const credit = element.credit;
+                        const professorName = element.professorName;
+                        const timetable = element.timetable;
+                        const limitation = element.limitation;
+                        const numberOfCurrent = element.numberOfCurrent;
 
 
-                    let temp = `
+                        let temp = `
                             <tr>
                                 <td>${collegeName}</td>
                                 <td>${departmentName}</td>
@@ -67,13 +100,13 @@ function search_courses() {
                                 <td>${numberOfCurrent}</td>
                             </tr>
                             `
-                    $('#course-list').append(temp)
-                })
-            } else {
-                console.log(result.errors)
-                alert("조회 api 에러");
+                        $('#course-list').append(temp)
+                    })
+                } else {
+                    console.log(result.errors)
+                    alert("조회 api 에러");
+                }
             }
-        }
         )
         .catch(error => {
             console.error("조회 api 에러", error);
