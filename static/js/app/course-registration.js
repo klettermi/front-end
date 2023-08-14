@@ -15,6 +15,47 @@ function logout() {
 }
 
 function search_courses() {
+    const sort = $("#sort option:selected").val();
+    const college = $("#college option:selected").val();
+    const depart = $("#depart option:selected").val();
+    const major = $("#major option:selected").val();
+
+    if (!college && !sort) {
+        $("#text_college").css("color", "red")
+        $("#text_sort").css("color", "red")
+        alert("필수 입력 정보를 확인해주세요.")
+        return;
+    }
+
+    $("#text_college").css("color", "black")
+    $("#text_sort").css("color", "black")
+
+    const params = {  // 필요한 query params를 {} 형태에 담아준다.
+        collegeId: college,
+        departId: depart,
+        sortNm: sort,
+        majorId: major
+    };
+
+    search_api(params)
+}
+
+function search_courses_by_subjectCd() {
+    const subjectCd = $("#subject-code").val();
+
+    if(!subjectCd) {
+        alert("과목 코드를 입력해주세요.")
+        return;
+    }
+
+    const params = {  // 필요한 query params를 {} 형태에 담아준다.
+        subjectCd: subjectCd
+    };
+
+    search_api(params)
+}
+
+function search_api(params) {
     const year = localStorage.getItem('year');
     let semester = 0;
     switch (localStorage.getItem('semester')) {
@@ -30,22 +71,9 @@ function search_courses() {
         case "겨울학기":
             semester = 4;
     }
-    const college = $("#college option:selected").val();
-    const depart = $("#depart option:selected").val();
-    const sort = $("#sort option:selected").val();
-    const major = $("#major option:selected").val();
-    const subjectCd = $("#subject-code").val();
-    
     const searchUrl = `${BASE_URL}/api/courses`
-    const params = {  // 필요한 query params를 {} 형태에 담아준다.
-        courseYear: year,
-        semester: semester,
-        subjectCd: subjectCd,
-        collegeId: college,
-        departId: depart,
-        sortNm: sort,
-        majorId: major
-    };
+    params.year = year
+    params.semester = semester
 
     const queryString = new URLSearchParams(params).toString();
     const requrl = `${searchUrl}?${queryString}`;
