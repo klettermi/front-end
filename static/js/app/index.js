@@ -31,7 +31,7 @@ function login() {
             alert(data.msg);
             window.location.replace("course-registration.html");
         } else {
-            alert("로그인 정보가 일치하지 않습니다.");
+            alert(data.errors);
         }
     })
     .catch(error => {
