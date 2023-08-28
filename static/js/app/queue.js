@@ -1,6 +1,6 @@
 $(document).ready(function () {
     let totalPeople = 10;
-    let currentWaitingCount = 0;
+    let currentWaitingCount = 6;
 
     function updateQueueInfo() {
         $('#waitingCount').text(currentWaitingCount);
@@ -9,7 +9,7 @@ $(document).ready(function () {
         const waitingTime = currentWaitingCount * averageTimePerPerson;
         $('#waitingTime').text(waitingTime + ' minutes');
 
-        const progressPercentage = (currentWaitingCount / totalPeople) * 100;
+        const progressPercentage = ((totalPeople - currentWaitingCount) / totalPeople) * 100;
         $('.progress-bar').css('width', progressPercentage + '%').attr('aria-valuenow', progressPercentage);
     }
 
