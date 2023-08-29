@@ -7,7 +7,9 @@ $(document).ready(function () {
 
         const averageTimePerPerson = 5;
         const waitingTime = currentWaitingCount * averageTimePerPerson;
-        $('#waitingTime').text(waitingTime + ' minutes');
+        const min = (waitingTime/60 < 1) ? 0 : waitingTime/60;
+        const sec = waitingTime%60;
+        $('#waitingTime').text(min + ' 분 ' + sec + ' 초');
 
         const progressPercentage = ((totalPeople - currentWaitingCount) / totalPeople) * 100;
         $('.progress-bar').css('width', progressPercentage + '%').attr('aria-valuenow', progressPercentage);
