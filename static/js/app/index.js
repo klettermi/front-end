@@ -29,14 +29,21 @@ function login() {
     .then(data => {
         if (data.statusCode == 200) {
             alert(data.msg);
-            window.location.replace("course-registration.html");
+            if(localStorage.getItem('period_name') === "예비수강신청") {
+                window.location.replace("reserve-course-registration.html");
+            } else if(localStorage.getItem('period_name') === "수강신청") {
+                window.location.replace("course-registration.html");
+            } else {
+                throw new Error("신청 기간이 아닙니다.")
+                // alert("신청 기간이 아닙니다.");
+            }
         } else {
             alert(data.errors);
         }
     })
     .catch(error => {
         console.error("로그인 중 에러발생:", error);
-        alert("로그인 중 에러가 발생하였습니다. 다시 시도해 주세요.");
+        alert(error);
     });
 }
 
@@ -65,6 +72,8 @@ function getUserInfo(){
 }
 
 function getPeriod(){
+    localStorage.clear();
+
     let timetableUrl = `${BASE_URL}/api/period`
 
     fetch(timetableUrl, {
@@ -72,12 +81,16 @@ function getPeriod(){
     })
         .then((response) => response.json())
         .then((result) => {
+            if(!result.success) {
+                throw new Error(result.errors)
+            }
             return result.data
         })
-        .then((result) => {       
-            var date = new Date(result.startTime); 
+        .then((result) => {
+            var date = new Date(result.startTime);
             var year = date.getFullYear();
             var month = date.getMonth() + 1;
+            const period_name = result.periodNM;
             var semester = '';
             switch(month){
                 case 2:
@@ -93,9 +106,12 @@ function getPeriod(){
                     semester = '겨울학기'
                     break;
             }
-            localStorage.clear();
             localStorage.setItem('year', year);
             localStorage.setItem('semester', semester);
+            localStorage.setItem('period_name', period_name)
+        })
+        .catch(error => {
+            console.log("신청 기간이 아닙니다", error)
         })
 }
 

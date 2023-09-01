@@ -43,7 +43,7 @@ function search_courses() {
 function search_courses_by_subjectCd() {
     const subjectCd = $("#subject-code").val();
 
-    if(!subjectCd) {
+    if (!subjectCd) {
         alert("과목 코드를 입력해주세요.")
         return;
     }
@@ -59,7 +59,7 @@ function search_api(params) {
     const year = localStorage.getItem('year');
     let semester = 0;
     switch (localStorage.getItem('semester')) {
-        case "1학기" :
+        case "1학기":
             semester = 1;
             break;
         case "2학기":
@@ -78,14 +78,12 @@ function search_api(params) {
     const queryString = new URLSearchParams(params).toString();
     const requrl = `${searchUrl}?${queryString}`;
 
-    console.log(requrl);
 
     fetch(requrl, {
         method: "GET"
     })
         .then((response) => response.json())
         .then((result) => {
-            console.log(result)
             $('#course-list').empty();
             if (result.success) {
                 if (result.data == "") {
@@ -131,7 +129,7 @@ function search_api(params) {
                 })
             } else {
                 console.log(result.errors)
-                alert("조회 api 에러");
+                alert("조회된 데이터가 없습니다.");
             }
         }
         )
@@ -141,6 +139,34 @@ function search_api(params) {
 }
 
 function register(courseId) {
+    const host = BASE_URL.substr(7); // https인 경우 수정필요!
+    const client = Stomp.client(`ws://${host}/ws`);
+    let totalPeople;
+    let currentWaitingCount;
+    const username = localStorage.getItem('username');
+
+    client.connect({}, function() { // 연결
+        $('.overlay').toggle(); // 대기열 보이게
+        // 수강신청 응답 구독
+        client.subscribe(`/sub/result/${username}`, (message) => {
+            $('.overlay').toggle(); // 대기열 숨기기
+            client.disconnect(); // 연결 종료
+            alert(message.body); // 응답 보여주기
+        });
+    
+        // 수강신청 대기인원 구독
+        let isFirstResponse = true;
+        client.subscribe(`/sub/order/${username}`, (message) => {
+            if (isFirstResponse) { // 첫 응답일때
+                isFirstResponse = false;
+                totalPeople = currentWaitingCount = message.body; // 전체인원 고정
+            } else {
+                currentWaitingCount = message.body; // 이후 대기순번만 업데이트
+            }
+            updateQueueInfo(totalPeople, currentWaitingCount); // 대기열 ui 업데이트
+        });
+    });
+
     let url = `${BASE_URL}/api/registration/` + courseId;
     let token = localStorage.getItem("Authorization");
     fetch(url, {
@@ -152,12 +178,25 @@ function register(courseId) {
     .then(response => response.json())
     .then(result => {
         if (result.success) {
-            alert(result.msg);
-            location.reload();
+            console.log(result.msg);
         } else {
-            alert(result.errors);
+            console.error(result.errors);
         }
     });
+}
+
+function updateQueueInfo(totalPeople, currentWaitingCount) {
+    $('#waitingCount').text(currentWaitingCount);
+    
+    const averageTimePerPerson = 5;
+    const waitingTime = currentWaitingCount * averageTimePerPerson;
+    const remainCount = totalPeople - currentWaitingCount;
+    const min = (waitingTime/60 < 1) ? 0 : waitingTime/60;
+    const sec = waitingTime%60;
+    $('#waitingTime').text(min + ' 분 ' + sec + ' 초');
+
+    const progressPercentage = (remainCount / totalPeople) * 100;
+    $('.progress-bar').css('width', progressPercentage + '%').attr('aria-valuenow', progressPercentage);
 }
 
 function cancel(registrationId) {
@@ -191,7 +230,6 @@ function getRegistration() {
     })
         .then(response => response.json())
         .then(result => {
-            console.log(result);
             if (result.success) {
                 $('#registration-list').empty();
 
@@ -250,7 +288,6 @@ function getCoursesFromBasket() {
     })
         .then(response => response.json())
         .then(result => {
-            console.log(result);
             if (result.success) {
                 $('#basket-list').empty();
                 result.data.forEach(element => {
@@ -315,7 +352,6 @@ function getUserInfo() {
     })
         .then((response) => response.json())
         .then((result) => {
-            console.log(result);
             if (result.success) {
                 var data = result.data
                 $('#student-info').empty();

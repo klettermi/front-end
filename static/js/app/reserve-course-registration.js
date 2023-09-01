@@ -74,8 +74,6 @@ function search_api(params) {
     const queryString = new URLSearchParams(params).toString();
     const requrl = `${searchUrl}?${queryString}`;
 
-    console.log(requrl);
-
     fetch(requrl, {
         method: "GET"
     })
@@ -187,7 +185,6 @@ function getCoursesFromBasket() {
     })
         .then(response => response.json())
         .then(result => {
-            console.log(result);
             if (result.success) {
                 $('#basket-list').empty();
 
