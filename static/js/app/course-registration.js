@@ -142,7 +142,7 @@ function search_api(params) {
 
 function register(courseId) {
     const host = BASE_URL.substr(8); // https인 경우 8
-    const client = Stomp.client(`ws://${host}/ws`);
+    const client = Stomp.client(`wss://${host}/ws`);
     let totalPeople;
     let currentWaitingCount;
     const username = localStorage.getItem('username');
@@ -154,6 +154,7 @@ function register(courseId) {
             $('.overlay').toggle(); // 대기열 숨기기
             client.disconnect(); // 연결 종료
             alert(message.body); // 응답 보여주기
+            location.reload(); // 새로고침
         });
     
         // 수강신청 대기인원 구독
