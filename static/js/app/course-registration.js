@@ -141,7 +141,7 @@ function search_api(params) {
 }
 
 function register(courseId) {
-    const host = BASE_URL.substr(7); // https인 경우 수정필요!
+    const host = BASE_URL.substr(8); // https인 경우 8
     const client = Stomp.client(`ws://${host}/ws`);
     let totalPeople;
     let currentWaitingCount;
