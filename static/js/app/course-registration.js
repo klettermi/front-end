@@ -143,12 +143,12 @@ function register(courseId) {
     const client = Stomp.client(`wss://${host}/ws`);
     let totalPeople;
     let currentWaitingCount;
-    const username = localStorage.getItem('username');
+    const usernumber = localStorage.getItem('usernumber');
 
     client.connect({}, function() { // 연결
         $('.overlay').toggle(); // 대기열 보이게
         // 수강신청 응답 구독
-        client.subscribe(`/sub/result/${username}`, (message) => {
+        client.subscribe(`/sub/result/${usernumber}`, (message) => {
             $('.overlay').toggle(); // 대기열 숨기기
             client.disconnect(); // 연결 종료
             alert(message.body); // 응답 보여주기
@@ -157,7 +157,7 @@ function register(courseId) {
     
         // 수강신청 대기인원 구독
         let isFirstResponse = true;
-        client.subscribe(`/sub/order/${username}`, (message) => {
+        client.subscribe(`/sub/order/${usernumber}`, (message) => {
             if (isFirstResponse) { // 첫 응답일때
                 isFirstResponse = false;
                 totalPeople = currentWaitingCount = message.body; // 전체인원 고정
