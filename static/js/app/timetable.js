@@ -29,7 +29,6 @@ function getTimetable() {
         })
         .then((result) => {
             result.forEach(course => {
-                console.log(course)
                 var table = document.getElementById("table");
 
                 var weekName = ['월', '화', '수', '목', '금', '토', '일'];
