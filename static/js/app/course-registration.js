@@ -189,11 +189,11 @@ function register(courseId) {
 function updateQueueInfo(totalPeople, currentWaitingCount) {
     $('#waitingCount').text(currentWaitingCount);
     
-    const averageTimePerPerson = 5;
+    const averageTimePerPerson = 0.3;
     const waitingTime = currentWaitingCount * averageTimePerPerson;
     const remainCount = totalPeople - currentWaitingCount;
-    const min = (waitingTime/60 < 1) ? 0 : waitingTime/60;
-    const sec = waitingTime%60;
+    const min = Math.floor(waitingTime/60);
+    const sec = Math.floor(waitingTime%60);
     $('#waitingTime').text(min + ' 분 ' + sec + ' 초');
 
     const progressPercentage = (remainCount / totalPeople) * 100;
