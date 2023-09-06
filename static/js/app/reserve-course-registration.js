@@ -39,7 +39,7 @@ function search_courses() {
 function search_courses_by_subjectCd() {
     const subjectCd = $("#subject-code").val();
 
-    if(!subjectCd) {
+    if (!subjectCd) {
         alert("과목 코드를 입력해주세요.")
         return;
     }
@@ -79,29 +79,29 @@ function search_api(params) {
     })
         .then((response) => response.json())
         .then((result) => {
-            $('#course-list').empty();
-            if (result.success) {
-                if (result.data == "") {
-                    alert("조회된 데이터가 없습니다.")
-                    return;
-                }    
-                result.data.forEach(element => {
-                    const courseId = element.courseId;
-                    const collegeName = element.collegeName;
-                    const departmentName = element.departmentName == null ? '-' : element.departmentName;
-                    const majorName = element.majorName == null ? '-' : element.majorName;
-                    const sort = element.sort;
-                    const subjectCd = element.subjectCd;
-                    const division = element.division;
-                    const subjectName = element.subjectName;
-                    const credit = element.credit;
-                    const professorName = element.professorName;
-                    const timetable = element.timetable;
-                    const limitation = element.limitation;
-                    const numberOfBasket = element.numberOfBasket;
+                $('#course-list').empty();
+                if (result.success) {
+                    if (result.data == "") {
+                        alert("조회된 데이터가 없습니다.")
+                        return;
+                    }
+                    result.data.forEach(element => {
+                        const courseId = element.courseId;
+                        const collegeName = element.collegeName;
+                        const departmentName = element.departmentName == null ? '-' : element.departmentName;
+                        const majorName = element.majorName == null ? '-' : element.majorName;
+                        const sort = element.sort;
+                        const subjectCd = element.subjectCd;
+                        const division = element.division;
+                        const subjectName = element.subjectName;
+                        const credit = element.credit;
+                        const professorName = element.professorName;
+                        const timetable = element.timetable;
+                        const limitation = element.limitation;
+                        const numberOfBasket = element.numberOfBasket;
 
 
-                    let temp = `
+                        let temp = `
                             <tr>
                                 <td>${collegeName}</td>
                                 <td>${departmentName}</td>
@@ -120,13 +120,13 @@ function search_api(params) {
                                 </td>
                             </tr>
                             `
-                    $('#course-list').append(temp)
-                })
-            } else {
-                console.log(result.errors)
-                alert("조회 api 에러");
+                        $('#course-list').append(temp)
+                    })
+                } else {
+                    console.log(result.errors)
+                    alert("검색된 강의가 없습니다.");
+                }
             }
-        }
         )
         .catch(error => {
             console.error("조회 api 에러", error);
