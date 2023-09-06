@@ -87,7 +87,7 @@ function search_api(params) {
                 $('#course-list').empty();
                 if (result.success) {
                     if (result.data == "") {
-                        alert("조회된 데이터가 없습니다.")
+                        alert("검색된 강의가 없습니다.")
                         return;
                     }
                     result.data.forEach(element => {
@@ -133,9 +133,9 @@ function search_api(params) {
                 }
             }
         )
-        .catch(error => {
-            console.error("조회 api 에러", error);
-        });
+        // .catch(error => {
+        //     console.error("조회 api 에러", error);
+        // });  검색 결과의 로그가 아닌 api 통신의 오류를 유저가 볼 수 있는 로그로 찍어야 할지 고민되어 주석 처리.
 }
 
 function register(courseId) {
