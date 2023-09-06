@@ -84,29 +84,29 @@ function search_api(params) {
     })
         .then((response) => response.json())
         .then((result) => {
-            $('#course-list').empty();
-            if (result.success) {
-                if (result.data == "") {
-                    alert("조회된 데이터가 없습니다.")
-                    return;
-                }
-                result.data.forEach(element => {
-                    const courseId = element.courseId;
-                    const collegeName = element.collegeName;
-                    const departmentName = element.departmentName == null ? '-' : element.departmentName;
-                    const majorName = element.majorName == null ? '-' : element.majorName;
-                    const sort = element.sort;
-                    const subjectCd = element.subjectCd;
-                    const division = element.division;
-                    const subjectName = element.subjectName;
-                    const credit = element.credit;
-                    const professorName = element.professorName;
-                    const timetable = element.timetable;
-                    const limitation = element.limitation;
-                    const numberOfCurrent = element.numberOfCurrent;
+                $('#course-list').empty();
+                if (result.success) {
+                    if (result.data == "") {
+                        alert("검색된 강의가 없습니다.")
+                        return;
+                    }
+                    result.data.forEach(element => {
+                        const courseId = element.courseId;
+                        const collegeName = element.collegeName;
+                        const departmentName = element.departmentName == null ? '-' : element.departmentName;
+                        const majorName = element.majorName == null ? '-' : element.majorName;
+                        const sort = element.sort;
+                        const subjectCd = element.subjectCd;
+                        const division = element.division;
+                        const subjectName = element.subjectName;
+                        const credit = element.credit;
+                        const professorName = element.professorName;
+                        const timetable = element.timetable;
+                        const limitation = element.limitation;
+                        const numberOfCurrent = element.numberOfCurrent;
 
 
-                    let temp = `
+                        let temp = `
                             <tr>
                                 <td>${collegeName}</td>
                                 <td>${departmentName}</td>
@@ -125,17 +125,17 @@ function search_api(params) {
                                 </td>
                             </tr>
                             `
-                    $('#course-list').append(temp)
-                })
-            } else {
-                console.log(result.errors)
-                alert("조회된 데이터가 없습니다.");
+                        $('#course-list').append(temp)
+                    })
+                } else {
+                    console.log(result.errors)
+                    alert("검색된 강의가 없습니다.");
+                }
             }
-        }
         )
-        .catch(error => {
-            console.error("조회 api 에러", error);
-        });
+        // .catch(error => {
+        //     console.error("조회 api 에러", error);
+        // });  검색 결과의 로그가 아닌 api 통신의 오류를 유저가 볼 수 있는 로그로 찍어야 할지 고민되어 주석 처리.
 }
 
 function register(courseId) {
@@ -145,7 +145,7 @@ function register(courseId) {
     let currentWaitingCount;
     const usernumber = localStorage.getItem('usernumber');
 
-    client.connect({}, function() { // 연결
+    client.connect({}, function () { // 연결
         $('.overlay').toggle(); // 대기열 보이게
         // 수강신청 응답 구독
         client.subscribe(`/sub/result/${usernumber}`, (message) => {
@@ -154,7 +154,7 @@ function register(courseId) {
             alert(message.body); // 응답 보여주기
             location.reload(); // 새로고침
         });
-    
+
         // 수강신청 대기인원 구독
         let isFirstResponse = true;
         client.subscribe(`/sub/order/${usernumber}`, (message) => {
@@ -176,14 +176,14 @@ function register(courseId) {
             "Authorization": token
         },
     })
-    .then(response => response.json())
-    .then(result => {
-        if (result.success) {
-            console.log(result.msg);
-        } else {
-            console.error(result.errors);
-        }
-    });
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                console.log(result.msg);
+            } else {
+                console.error(result.errors);
+            }
+        });
 }
 
 function updateQueueInfo(totalPeople, currentWaitingCount) {
